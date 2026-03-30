@@ -1,119 +1,348 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+      <div class="container">
+          {/* <!-- * Progress Section --> */}
+          <section class="progress-section">
+              <div class="progress-section-mobile"> {/* <!-- * Progress Section Mobile -->*/}
 
-      <div className="ticks"></div>
+                  <div class="progress-circle">
+                      <span class="step-number active">1</span>
+                      <div class="user-info-step">
+                          <span class="step">Step 1</span>
+                          <span class="step-name">Your Info</span>
+                      </div>
+                  </div>
+                  <div class="progress-circle">
+                      <span class="step-number">2</span>
+                      <div class="user-info-step">
+                          <span class="step">Step 2</span>
+                          <span class="step-name">Select Plan</span>
+                      </div>
+                  </div>
+                  <div class="progress-circle">
+                      <span class="step-number">3</span>
+                      <div class="user-info-step">
+                          <span class="step">Step 3</span>
+                          <span class="step-name">Add-ons</span>
+                      </div>
+                  </div>
+                  <div class="progress-circle">
+                      <span class="step-number">4</span>
+                      <div class="user-info-step">
+                          <span class="step">Step 4</span>
+                          <span class="step-name">Summary</span>
+                      </div>
+                  </div>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+              </div>
+          </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
+
+          {/* <!-- * Main Form Section --> */}
+          <main class="form-main-section">
+
+              {/* <!-- * Step 1: Personal Info Form --> */}
+              <form class="personal-info-form">
+
+                  <section class="personal-info-form-mobile">  {/*<!-- * Personal Info Form Mobile Container -->*/}
+
+                      <div class="form-header">
+                          <h2>Personal info</h2>
+                          <p>Please provide your name, email address, and phone number.</p>
+                      </div>
+                      <div class="form-body">
+                          <div class="input-container">
+                              <div class="label-and-error">
+                                  <label for="name">Name</label>
+                                  <span class="error-message"></span>
+                              </div>
+                              <input type="text" id="name" class="name" name="name" placeholder="e.g. Stephen King" required autocomplete="on"/>
+                          </div>
+                          <div class="input-container">
+                              <div class="label-and-error">
+                                  <label for="email">Email Address</label>
+                                  <span class="error-message"></span>
+                              </div>
+                              <input type="email" id="email" class="email" name="email" placeholder="e.g. stephenking@lorem.com" required autocomplete="on"/>
+                          </div>
+                          <div class="input-container">
+                              <div class="label-and-error">
+                                  <label for="phone">Phone Number</label>
+                                  <span class="error-message"></span>
+                              </div>
+                              <input type="tel" id="phone" class="phone-no" name="phone" placeholder="e.g. +1 234 567 890" required autocomplete="on"/>
+                          </div>
+                      </div>
+
+                  </section>
+
+                  <div class="submit-form">
+                      <button type="submit" class="next-button">
+                          Next Step
+                      </button>
+                  </div>
+              </form>
+
+
+              {/* <!-- * Step 2: Select Plan Section --> */}
+              <section class="select-plan-section hidden">
+                  <section class="select-plan-section-mobile">  {/*<!-- * Select Plan Form Mobile Container -->*/}
+
+                      <div class="form-header">
+                          <h2>Select your plan</h2>
+                          <p>You have the option of monthly or yearly billing.</p>
+                      </div>
+
+                      <div class="form-body">
+                          <span class="plan-error hidden"></span>
+                          <div class="plan-container">
+                              {/* <!-- * Plan Cards --> */}
+
+                              {/* <!-- * Plan Card 1: Arcade Plan --> */}
+                              <div class="plan-card">
+                                  <div class="plan-card-image">
+                                      <img src="images/icon-arcade.svg" alt="Arcade Plan Image"/>
+                                  </div>
+                                  <div class="plan-card-body">
+                                      <h3 class="plan-card-header">
+                                          Arcade
+                                      </h3>
+                                      <div class="monthly-yearly-pricing">
+                                          <span class="price">
+                                              $9
+                                          </span>
+                                          <span class="pricing-cycle">
+                                              /mo
+                                          </span>
+                                      </div>
+                                      <p class="yearly-discount-duration hidden"></p>
+                                  </div>
+                              </div>
+
+                              {/* <!-- * Plan Card 2: Advanced Plan --> */}
+                              <div class="plan-card">
+                                  <div class="plan-card-image">
+                                      <img src="images/icon-advanced.svg" alt="Advanced Plan Image"/>
+                                  </div>
+                                  <div class="plan-card-body">
+                                      <h3 class="plan-card-header">
+                                          Advanced
+                                      </h3>
+                                      <div class="monthly-yearly-pricing">
+                                          <span class="price">
+                                              $12
+                                          </span>
+                                          <span class="pricing-cycle">
+                                              /mo
+                                          </span>
+                                      </div>
+                                      <p class="yearly-discount-duration hidden"></p>
+                                  </div>
+                              </div>
+
+                              {/* <!-- * Plan Card 3: Pro Plan --> */}
+                              <div class="plan-card">
+                                  <div class="plan-card-image">
+                                      <img src="images/icon-pro.svg" alt="Pro Plan Image"/>
+                                  </div>
+                                  <div class="plan-card-body">
+                                      <h3 class="plan-card-header">
+                                          Pro
+                                      </h3>
+                                      <div class="monthly-yearly-pricing">
+                                          <span class="price">
+                                              $15
+                                          </span>
+                                          <span class="pricing-cycle">
+                                              /mo
+                                          </span>
+                                      </div>
+                                      <p class="yearly-discount-duration hidden"></p>
+                                  </div>
+                              </div>
+                          </div>
+
+                          {/* <!-- * Billing Options: Monthly and Yearly --> */}
+                          <div class="billing-container">
+                              <div class="billing-option-container">
+                                  <input type="radio" id="monthly" name="billing" value="monthly" checked/>
+                                  <label for="monthly">Monthly</label>
+                              </div>
+
+                              <div class="toggle-container">
+                                  <label for="billing-toggle">Toggle</label>
+                                  <input type="range" id="billing-toggle" name="billing toggle" min="0" max="1" step="1" value="0"/>
+                                  <div class="toggle-thumb"></div>
+                              </div>
+
+                              <div class="billing-option-container">
+                                  <input type="radio" id="yearly" name="billing" value="yearly"/>
+                                  <label for="yearly">Yearly</label>
+                              </div>
+                          </div>
+                      </div>
+
+                  </section>
+
+                  <div class="submit-plan">
+                      <button type="button" class="previous-button">
+                          Go Back
+                      </button>
+                      <button type="button" class="next-button">
+                          Next Step
+                      </button>
+                  </div>
+              </section>
+
+
+              {/* <!-- * Step 3: Add-ons Section --> */}
+              <section class="add-ons-section hidden">
+                  <section class="add-ons-section-mobile"> {/*<!-- * Add-ons Section Container Mobile -->*/}
+
+                      <div class="form-header">
+                          <h2>Pick add-ons</h2>
+                          <p>Add-ons help enhance your gaming experience.</p>
+                      </div>
+
+                      <div class="add-ons-container">
+
+                          {/* <!-- * Addon Option Card 1: Online Service --> */}
+                          <div class="addon-card">
+                              <div class="addon-card-body">
+                                  <input type="checkbox" id="online-service" name="online-service-addon" value="online-service"/>
+                                  <span class="custom-checkbox"></span>
+                                  <div class="addon-details">
+                                      <label for="online-service" class="addon-card-header">
+                                          Online service
+                                      </label>
+                                      <p class="addon-card-description">
+                                          Access to multiplayer games
+                                      </p>
+                                  </div>
+                              </div>
+                              <div class="monthly-yearly-pricing">
+                                  <span class="addon-price">
+                                      +$1
+                                  </span>
+                                  <span class="addon-pricing-cycle">
+                                      /mo
+                                  </span>
+                              </div>
+                          </div>
+
+                          {/* <!-- * Addon Option Card 2: Larger Storage --> */}
+                          <div class="addon-card">
+                              <div class="addon-card-body">
+                                  <input type="checkbox" id="larger-storage" name="larger-storage-addon" value="larger-storage"/>
+                                  <span class="custom-checkbox"></span>
+                                  <div class="addon-details">
+                                      <label for="larger-storage" class="addon-card-header">
+                                          Larger Storage
+                                      </label>
+                                      <p class="addon-card-description">
+                                          Extra 1TB of cloud save
+                                      </p>
+                                  </div>
+                              </div>
+                              <div class="monthly-yearly-pricing">
+                                  <span class="addon-price">
+                                      +$2
+                                  </span>
+                                  <span class="addon-pricing-cycle">
+                                      /mo
+                                  </span>
+                              </div>
+                          </div>
+
+                          {/* <!-- * Addon Option Card 3: Customizable Profile --> */}
+                          <div class="addon-card">
+                              <div class="addon-card-body">
+                                  <input type="checkbox" id="customizable-profile" name="customizable-profile-addon" value="customizable-profile"/>
+                                  <span class="custom-checkbox"></span>
+                                  <div class="addon-details">
+                                      <label for="customizable-profile" class="addon-card-header">
+                                          Customizable Profile
+                                      </label>
+                                      <p class="addon-card-description">
+                                          Custom theme on your profile
+                                      </p>
+                                  </div>
+                              </div>
+                              <div class="monthly-yearly-pricing">
+                                  <span class="addon-price">
+                                      +$2
+                                  </span>
+                                  <span class="addon-pricing-cycle">
+                                      /mo
+                                  </span>
+                              </div>
+                          </div>
+                      </div>
+
+                  </section>
+
+                  <div class="submit-add-ons">
+                      <button type="button" class="previous-button">
+                          Go Back
+                      </button>
+                      <button type="button" class="next-button">
+                          Next Step
+                      </button>
+                  </div>
+              </section>
+
+
+              {/* <!-- * Step 4: Summary Section--> */}
+              <section class="summary-section hidden">
+                  <section class="summary-section-mobile"> {/*<!-- * Summary Section Container on Mobile  -->*/}
+
+                      <div class="form-header">
+                          <h2>Finishing up</h2>
+                          <p>Double-check everything looks OK before confirming.</p>
+                      </div>
+                      <div class="summary-card-container">
+                          <div class="summary-card">
+                              <div class="selected-plan-and-price">
+                                  <div class="selected-plan">
+                                      <p class="user-plan-selected"></p>
+                                      <button type="button" class="change-plan-btn">
+                                          Change
+                                      </button>
+                                  </div>
+                                  <div class="selected-plan-price">
+                                      <span></span>
+                                  </div>
+                              </div>
+                              <div class="divider"></div>
+                              <div class="selected-addon-and-price-container"></div>
+                          </div>
+                          <div class="total-cost-container">
+                              <span class="total-cost"></span>
+                              <span class="total-cost-value"></span>
+                          </div>
+                      </div>
+
+                  </section>
+
+                  <div class="submit-summary">
+                      <button type="button" class="previous-button">
+                          Go Back
+                      </button>
+                      <button type="submit" class="next-button">
+                          Confirm
+                      </button>
+                  </div>
+
+              </section>
+
+              {/* <!-- * Step 5: Thank You Section --> */}
+              <section class="thank-you-section hidden"></section>
+          </main>
+      </div>
     </>
   )
 }
