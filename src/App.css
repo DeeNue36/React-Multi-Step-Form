@@ -59,12 +59,21 @@
   body {
     @apply bg-neutral-transparent-blue min-h-screen font-family-ubuntu overflow-x-hidden;
   }
+
+  button {
+    @apply cursor-pointer font-family-ubuntu;
+  }
 }
 
 @layer utilities {
   .hidden {
     @apply hidden;
   }
+
+  .active {
+    @apply bg-primary-lighter-blue text-primary-dark-blue;
+  }
+
 }
 
 @layer components {
@@ -72,6 +81,7 @@
     @apply min-h-screen min-w-screen;
   }
 
+  /** progress section */
   .progress-section {
     @apply bg-mobile h-48 w-full bg-no-repeat bg-cover bg-center flex justify-center;
 
@@ -82,12 +92,34 @@
         @apply xl:flex xl:items-center;
 
         & .step-number {
-          @apply border rounded-[50%] w-10 h-10 border-neutral-transparent-blue text-neutral-white flex justify-center items-center font-bold;
+          @apply border rounded-[50%] w-10 h-10 border-neutral-transparent-blue text-neutral-white flex justify-center items-center font-bold hover:cursor-pointer;
         }
 
         & .user-info-step {
-          @apply hidden xl:block;
+          @apply hidden xl:flex xl:flex-col xl:items-start xl:uppercase;
         }
+      }
+    }
+  }
+
+  /** Reusable/Repeated Styles */
+  .next-button {
+    @apply bg-primary-dark-blue text-neutral-white w-32 h-12 hover:bg-dark-blue-hover rounded-[0.3125rem];
+  }
+
+  /** form section */
+  .form-main-section {
+    @apply  w-full h-[calc(100svh-12rem)];
+
+    & .personal-info-form {
+      @apply h-full flex flex-col justify-between items-center;
+
+      & .personal-info-form-mobile {
+        @apply bg-neutral-white w-[90%] flex flex-col;
+      }
+
+      & .submit-form {
+        @apply w-full flex justify-end py-6 px-4 bg-neutral-white;
       }
     }
   }
