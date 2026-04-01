@@ -69,7 +69,7 @@
 
 @layer utilities {
   .hidden {
-    @apply hidden;
+    /* @apply hidden; */
   }
 
   .active {
@@ -105,6 +105,13 @@
   }
 
   /** Reusable/Repeated Styles */
+  .form {
+    @apply h-full flex flex-col justify-between items-center;
+  }
+
+  .form-mobile {
+    @apply bg-neutral-white w-[90vw] flex flex-col py-5 px-5 rounded-lg -mbs-20.5 shadow-(--shadow-form);
+  }
   .next-button {
     @apply bg-primary-dark-blue text-neutral-white w-32 h-12 hover:bg-dark-blue-hover rounded-[0.3125rem];
   }
@@ -113,18 +120,26 @@
     @apply w-full flex justify-end py-6 px-4 bg-neutral-white;
   }
 
-  /** Form Section */
+  .submit-btns {
+    @apply justify-between;
+  }
+
+  .previous-button {
+    @apply text-neutral-dark-grey font-medium;
+  }
+
+  /** Section 1: Personal Info Form Section */
   .form-main-section {
     @apply w-full h-[calc(100svh-12rem)];
   }
 
-  .personal-info-form {
+  /* .personal-info-form {
     @apply h-full flex flex-col justify-between items-center;
   }
 
   .personal-info-form-mobile {
     @apply bg-neutral-white w-[90vw] flex flex-col py-5 px-5 rounded-lg -mbs-20.5 shadow-(--shadow-form);
-  }
+  } */
 
   .form-header {
     @apply mt-12;
@@ -161,5 +176,22 @@
 
   .input-container input {
     @apply text-primary-dark-blue w-full h-12 rounded-lg border border-neutral-transparent-purple outline-none px-3 text-[1rem] hover:border-primary-purple-medium hover:border-[0.0938rem] focus:border-primary-purple-medium focus:border-[0.0938rem] focus-visible:border-primary-purple-medium focus-visible:border-[0.0938rem];
+  }
+
+  .input-container input::placeholder {
+    @apply text-neutral-dark-grey;
+  }
+
+  /** Section 2: Plan Selection  */
+  .plan-error {
+    @apply text-primary-bright-red font-medium text-[1rem] mbe-[0.8rem];
+  }
+
+  .form-body:has(.plan-error:not(.hidden)) {
+    @apply mbs-[calc(4rem-0.8rem)];
+  }
+
+  .plan-container {
+    @apply flex flex-col justify-between gap-y-4 mbe-8;
   }
 }
