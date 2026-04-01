@@ -1,40 +1,43 @@
 import './App.css'
+import arcade from '../public/Images/icon-arcade.svg'
+import advanced from '../public/Images/icon-advanced.svg'
+import pro from '../public/Images/icon-pro.svg'
 
 function App() {
 
   return (
     <>
-      <div class="container">
+      <div className="container">
           {/* <!-- * Progress Section --> */}
-          <section class="progress-section">
-              <div class="progress-section-mobile"> {/* <!-- * Progress Section Mobile -->*/}
+          <section className="progress-section">
+              <div className="progress-section-mobile"> {/* <!-- * Progress Section Mobile -->*/}
 
-                  <div class="progress-circle">
-                      <span class="step-number active">1</span>
-                      <div class="user-info-step">
-                          <span class="step">Step 1</span>
-                          <span class="step-name">Your Info</span>
+                  <div className="progress-circle">
+                      <span className="step-number active">1</span>
+                      <div className="user-info-step">
+                          <span className="step">Step 1</span>
+                          <span className="step-name">Your Info</span>
                       </div>
                   </div>
-                  <div class="progress-circle">
-                      <span class="step-number">2</span>
-                      <div class="user-info-step">
-                          <span class="step">Step 2</span>
-                          <span class="step-name">Select Plan</span>
+                  <div className="progress-circle">
+                      <span className="step-number">2</span>
+                      <div className="user-info-step">
+                          <span className="step">Step 2</span>
+                          <span className="step-name">Select Plan</span>
                       </div>
                   </div>
-                  <div class="progress-circle">
-                      <span class="step-number">3</span>
-                      <div class="user-info-step">
-                          <span class="step">Step 3</span>
-                          <span class="step-name">Add-ons</span>
+                  <div className="progress-circle">
+                      <span className="step-number">3</span>
+                      <div className="user-info-step">
+                          <span className="step">Step 3</span>
+                          <span className="step-name">Add-ons</span>
                       </div>
                   </div>
-                  <div class="progress-circle">
-                      <span class="step-number">4</span>
-                      <div class="user-info-step">
-                          <span class="step">Step 4</span>
-                          <span class="step-name">Summary</span>
+                  <div className="progress-circle">
+                      <span className="step-number">4</span>
+                      <div className="user-info-step">
+                          <span className="step">Step 4</span>
+                          <span className="step-name">Summary</span>
                       </div>
                   </div>
 
@@ -43,45 +46,45 @@ function App() {
 
 
           {/* <!-- * Main Form Section --> */}
-          <main class="form-main-section">
+          <main className="form-main-section">
 
               {/* <!-- * Step 1: Personal Info Form --> */}
-              <form class="personal-info-form">
+              <form className="form personal-info-form hidden">
 
-                  <section class="personal-info-form-mobile">  {/*<!-- * Personal Info Form Mobile Container -->*/}
+                  <section className=" form-mobile personal-info-form-mobile">  {/*<!-- * Personal Info Form Mobile Container -->*/}
 
-                      <div class="form-header">
+                      <div className="form-header">
                           <h1>Personal info</h1>
                           <p>Please provide your name, email address, and phone number.</p>
                       </div>
-                      <div class="form-body">
-                          <div class="input-container">
-                              <div class="label-and-error">
+                      <div className="form-body">
+                          <div className="input-container">
+                              <div className="label-and-error">
                                   <label for="name">Name</label>
-                                  <span class="error-message"></span>
+                                  <span className="error-message"></span>
                               </div>
-                              <input type="text" id="name" class="name" name="name" placeholder="e.g. Stephen King" required autocomplete="on"/>
+                              <input type="text" id="name" className="name" name="name" placeholder="e.g. Stephen King" required autocomplete="on"/>
                           </div>
-                          <div class="input-container">
-                              <div class="label-and-error">
+                          <div className="input-container">
+                              <div className="label-and-error">
                                   <label for="email">Email Address</label>
-                                  <span class="error-message"></span>
+                                  <span className="error-message"></span>
                               </div>
-                              <input type="email" id="email" class="email" name="email" placeholder="e.g. stephenking@lorem.com" required autocomplete="on"/>
+                              <input type="email" id="email" className="email" name="email" placeholder="e.g. stephenking@lorem.com" required autocomplete="on"/>
                           </div>
-                          <div class="input-container">
-                              <div class="label-and-error">
+                          <div className="input-container">
+                              <div className="label-and-error">
                                   <label for="phone">Phone Number</label>
-                                  <span class="error-message"></span>
+                                  <span className="error-message"></span>
                               </div>
-                              <input type="tel" id="phone" class="phone-no" name="phone" placeholder="e.g. +1 234 567 890" required autocomplete="on"/>
+                              <input type="tel" id="phone" className="phone-no" name="phone" placeholder="e.g. +1 234 567 890" required autocomplete="on"/>
                           </div>
                       </div>
 
                   </section>
 
-                  <div class="submit-form">
-                      <button type="submit" class="next-button">
+                  <div className="submit-form">
+                      <button type="submit" className="next-button">
                           Next Step
                       </button>
                   </div>
@@ -89,97 +92,97 @@ function App() {
 
 
               {/* <!-- * Step 2: Select Plan Section --> */}
-              <section class="select-plan-section hidden">
-                  <section class="select-plan-section-mobile">  {/*<!-- * Select Plan Form Mobile Container -->*/}
+              <section className="form select-plan-section">
+                  <section className="form-mobile select-plan-section-mobile">  {/*<!-- * Select Plan Form Mobile Container -->*/}
 
-                      <div class="form-header">
-                          <h2>Select your plan</h2>
+                      <div className="form-header">
+                          <h1>Select your plan</h1>
                           <p>You have the option of monthly or yearly billing.</p>
                       </div>
 
-                      <div class="form-body">
-                          <span class="plan-error hidden"></span>
-                          <div class="plan-container">
+                      <div className="form-body">
+                          <span className="plan-error hidden"></span>
+                          <div className="plan-container">
                               {/* <!-- * Plan Cards --> */}
 
                               {/* <!-- * Plan Card 1: Arcade Plan --> */}
-                              <div class="plan-card">
-                                  <div class="plan-card-image">
-                                      <img src="images/icon-arcade.svg" alt="Arcade Plan Image"/>
+                              <div className="plan-card">
+                                  <div className="plan-card-image">
+                                      <img src={arcade} alt="Arcade Plan Image"/>
                                   </div>
-                                  <div class="plan-card-body">
-                                      <h3 class="plan-card-header">
+                                  <div className="plan-card-body">
+                                      <h3 className="plan-card-header">
                                           Arcade
                                       </h3>
-                                      <div class="monthly-yearly-pricing">
-                                          <span class="price">
+                                      <div className="monthly-yearly-pricing">
+                                          <span className="price">
                                               $9
                                           </span>
-                                          <span class="pricing-cycle">
+                                          <span className="pricing-cycle">
                                               /mo
                                           </span>
                                       </div>
-                                      <p class="yearly-discount-duration hidden"></p>
+                                      <p className="yearly-discount-duration hidden"></p>
                                   </div>
                               </div>
 
                               {/* <!-- * Plan Card 2: Advanced Plan --> */}
-                              <div class="plan-card">
-                                  <div class="plan-card-image">
-                                      <img src="images/icon-advanced.svg" alt="Advanced Plan Image"/>
+                              <div className="plan-card">
+                                  <div className="plan-card-image">
+                                      <img src={advanced} alt="Advanced Plan Image"/>
                                   </div>
-                                  <div class="plan-card-body">
-                                      <h3 class="plan-card-header">
+                                  <div className="plan-card-body">
+                                      <h3 className="plan-card-header">
                                           Advanced
                                       </h3>
-                                      <div class="monthly-yearly-pricing">
-                                          <span class="price">
+                                      <div className="monthly-yearly-pricing">
+                                          <span className="price">
                                               $12
                                           </span>
-                                          <span class="pricing-cycle">
+                                          <span className="pricing-cycle">
                                               /mo
                                           </span>
                                       </div>
-                                      <p class="yearly-discount-duration hidden"></p>
+                                      <p className="yearly-discount-duration hidden"></p>
                                   </div>
                               </div>
 
                               {/* <!-- * Plan Card 3: Pro Plan --> */}
-                              <div class="plan-card">
-                                  <div class="plan-card-image">
-                                      <img src="images/icon-pro.svg" alt="Pro Plan Image"/>
+                              <div className="plan-card">
+                                  <div className="plan-card-image">
+                                      <img src={pro} alt="Pro Plan Image"/>
                                   </div>
-                                  <div class="plan-card-body">
-                                      <h3 class="plan-card-header">
+                                  <div className="plan-card-body">
+                                      <h3 className="plan-card-header">
                                           Pro
                                       </h3>
-                                      <div class="monthly-yearly-pricing">
-                                          <span class="price">
+                                      <div className="monthly-yearly-pricing">
+                                          <span className="price">
                                               $15
                                           </span>
-                                          <span class="pricing-cycle">
+                                          <span className="pricing-cycle">
                                               /mo
                                           </span>
                                       </div>
-                                      <p class="yearly-discount-duration hidden"></p>
+                                      <p className="yearly-discount-duration hidden"></p>
                                   </div>
                               </div>
                           </div>
 
                           {/* <!-- * Billing Options: Monthly and Yearly --> */}
-                          <div class="billing-container">
-                              <div class="billing-option-container">
+                          <div className="billing-container">
+                              <div className="billing-option-container">
                                   <input type="radio" id="monthly" name="billing" value="monthly" checked/>
                                   <label for="monthly">Monthly</label>
                               </div>
 
-                              <div class="toggle-container">
+                              <div className="toggle-container">
                                   <label for="billing-toggle">Toggle</label>
                                   <input type="range" id="billing-toggle" name="billing toggle" min="0" max="1" step="1" value="0"/>
-                                  <div class="toggle-thumb"></div>
+                                  <div className="toggle-thumb"></div>
                               </div>
 
-                              <div class="billing-option-container">
+                              <div className="billing-option-container">
                                   <input type="radio" id="yearly" name="billing" value="yearly"/>
                                   <label for="yearly">Yearly</label>
                               </div>
@@ -188,11 +191,11 @@ function App() {
 
                   </section>
 
-                  <div class="submit-plan">
-                      <button type="button" class="previous-button">
+                  <div className="submit-btns submit-form">
+                      <button type="button" className="previous-button">
                           Go Back
                       </button>
-                      <button type="button" class="next-button">
+                      <button type="button" className="next-button">
                           Next Step
                       </button>
                   </div>
@@ -200,83 +203,83 @@ function App() {
 
 
               {/* <!-- * Step 3: Add-ons Section --> */}
-              <section class="add-ons-section hidden">
-                  <section class="add-ons-section-mobile"> {/*<!-- * Add-ons Section Container Mobile -->*/}
+              <section className="add-ons-section hidden">
+                  <section className="add-ons-section-mobile"> {/*<!-- * Add-ons Section Container Mobile -->*/}
 
-                      <div class="form-header">
+                      <div className="form-header">
                           <h2>Pick add-ons</h2>
                           <p>Add-ons help enhance your gaming experience.</p>
                       </div>
 
-                      <div class="add-ons-container">
+                      <div className="add-ons-container">
 
                           {/* <!-- * Addon Option Card 1: Online Service --> */}
-                          <div class="addon-card">
-                              <div class="addon-card-body">
+                          <div className="addon-card">
+                              <div className="addon-card-body">
                                   <input type="checkbox" id="online-service" name="online-service-addon" value="online-service"/>
-                                  <span class="custom-checkbox"></span>
-                                  <div class="addon-details">
-                                      <label for="online-service" class="addon-card-header">
+                                  <span className="custom-checkbox"></span>
+                                  <div className="addon-details">
+                                      <label for="online-service" className="addon-card-header">
                                           Online service
                                       </label>
-                                      <p class="addon-card-description">
+                                      <p className="addon-card-description">
                                           Access to multiplayer games
                                       </p>
                                   </div>
                               </div>
-                              <div class="monthly-yearly-pricing">
-                                  <span class="addon-price">
+                              <div className="monthly-yearly-pricing">
+                                  <span className="addon-price">
                                       +$1
                                   </span>
-                                  <span class="addon-pricing-cycle">
+                                  <span className="addon-pricing-cycle">
                                       /mo
                                   </span>
                               </div>
                           </div>
 
                           {/* <!-- * Addon Option Card 2: Larger Storage --> */}
-                          <div class="addon-card">
-                              <div class="addon-card-body">
+                          <div className="addon-card">
+                              <div className="addon-card-body">
                                   <input type="checkbox" id="larger-storage" name="larger-storage-addon" value="larger-storage"/>
-                                  <span class="custom-checkbox"></span>
-                                  <div class="addon-details">
-                                      <label for="larger-storage" class="addon-card-header">
+                                  <span className="custom-checkbox"></span>
+                                  <div className="addon-details">
+                                      <label for="larger-storage" className="addon-card-header">
                                           Larger Storage
                                       </label>
-                                      <p class="addon-card-description">
+                                      <p className="addon-card-description">
                                           Extra 1TB of cloud save
                                       </p>
                                   </div>
                               </div>
-                              <div class="monthly-yearly-pricing">
-                                  <span class="addon-price">
+                              <div className="monthly-yearly-pricing">
+                                  <span className="addon-price">
                                       +$2
                                   </span>
-                                  <span class="addon-pricing-cycle">
+                                  <span className="addon-pricing-cycle">
                                       /mo
                                   </span>
                               </div>
                           </div>
 
                           {/* <!-- * Addon Option Card 3: Customizable Profile --> */}
-                          <div class="addon-card">
-                              <div class="addon-card-body">
+                          <div className="addon-card">
+                              <div className="addon-card-body">
                                   <input type="checkbox" id="customizable-profile" name="customizable-profile-addon" value="customizable-profile"/>
-                                  <span class="custom-checkbox"></span>
-                                  <div class="addon-details">
-                                      <label for="customizable-profile" class="addon-card-header">
+                                  <span className="custom-checkbox"></span>
+                                  <div className="addon-details">
+                                      <label for="customizable-profile" className="addon-card-header">
                                           Customizable Profile
                                       </label>
-                                      <p class="addon-card-description">
+                                      <p className="addon-card-description">
                                           Custom theme on your profile
                                       </p>
                                   </div>
                               </div>
-                              <div class="monthly-yearly-pricing">
-                                  <span class="addon-price">
+                              <div className="monthly-yearly-pricing">
+                                  <span className="addon-price">
                                       +$2
                                   </span>
-                                  <span class="addon-pricing-cycle">
+                                  <span className="addon-pricing-cycle">
                                       /mo
                                   </span>
                               </div>
@@ -285,11 +288,11 @@ function App() {
 
                   </section>
 
-                  <div class="submit-add-ons">
-                      <button type="button" class="previous-button">
+                  <div className="submit-btns submit-form">
+                      <button type="button" className="previous-button">
                           Go Back
                       </button>
-                      <button type="button" class="next-button">
+                      <button type="button" className="next-button">
                           Next Step
                       </button>
                   </div>
@@ -297,42 +300,42 @@ function App() {
 
 
               {/* <!-- * Step 4: Summary Section--> */}
-              <section class="summary-section hidden">
-                  <section class="summary-section-mobile"> {/*<!-- * Summary Section Container on Mobile  -->*/}
+              <section className="summary-section hidden">
+                  <section className="summary-section-mobile"> {/*<!-- * Summary Section Container on Mobile  -->*/}
 
-                      <div class="form-header">
+                      <div className="form-header">
                           <h2>Finishing up</h2>
                           <p>Double-check everything looks OK before confirming.</p>
                       </div>
-                      <div class="summary-card-container">
-                          <div class="summary-card">
-                              <div class="selected-plan-and-price">
-                                  <div class="selected-plan">
-                                      <p class="user-plan-selected"></p>
-                                      <button type="button" class="change-plan-btn">
+                      <div className="summary-card-container">
+                          <div className="summary-card">
+                              <div className="selected-plan-and-price">
+                                  <div className="selected-plan">
+                                      <p className="user-plan-selected"></p>
+                                      <button type="button" className="change-plan-btn">
                                           Change
                                       </button>
                                   </div>
-                                  <div class="selected-plan-price">
+                                  <div className="selected-plan-price">
                                       <span></span>
                                   </div>
                               </div>
-                              <div class="divider"></div>
-                              <div class="selected-addon-and-price-container"></div>
+                              <div className="divider"></div>
+                              <div className="selected-addon-and-price-container"></div>
                           </div>
-                          <div class="total-cost-container">
-                              <span class="total-cost"></span>
-                              <span class="total-cost-value"></span>
+                          <div className="total-cost-container">
+                              <span className="total-cost"></span>
+                              <span className="total-cost-value"></span>
                           </div>
                       </div>
 
                   </section>
 
-                  <div class="submit-summary">
-                      <button type="button" class="previous-button">
+                  <div className="submit-btns submit-form">
+                      <button type="button" className="previous-button">
                           Go Back
                       </button>
-                      <button type="submit" class="next-button">
+                      <button type="submit" className="next-button">
                           Confirm
                       </button>
                   </div>
@@ -340,7 +343,7 @@ function App() {
               </section>
 
               {/* <!-- * Step 5: Thank You Section --> */}
-              <section class="thank-you-section hidden"></section>
+              <section className="thank-you-section hidden"></section>
           </main>
       </div>
     </>
