@@ -43,11 +43,13 @@
   --color-shine: #ffffff48;
   /** typography */
   --font-family-ubuntu: Ubuntu, sans-serif;
-  --text-size: 0.875rem;
+  --text-small-size: 0.875rem;
   --font-weight-light: 300;
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-bold: 700;
+  /** shadow */
+  --shadow-form: 0rem 0.5rem 0.5rem 0rem var(--color-neutral-transparent-purple);
 
   /** background images */
   --background-image-mobile: url('../public/Images/bg-sidebar-mobile.svg');
@@ -60,7 +62,7 @@
     @apply bg-neutral-transparent-blue min-h-screen font-family-ubuntu overflow-x-hidden;
   }
 
-  button {
+  button, input {
     @apply cursor-pointer font-family-ubuntu;
   }
 }
@@ -81,25 +83,25 @@
     @apply min-h-screen min-w-screen;
   }
 
-  /** progress section */
+  /** Progress Section */
   .progress-section {
     @apply bg-mobile h-48 w-full bg-no-repeat bg-cover bg-center flex justify-center;
+  }
 
-    & .progress-section-mobile {
-      @apply flex justify-between items-center w-1/2;
+  .progress-section-mobile {
+    @apply flex justify-between items-center w-1/2 mbe-16;
+  }
 
-      & .progress-circle {
-        @apply xl:flex xl:items-center;
+  .progress-circle {
+    @apply xl:flex xl:items-center;
+  }
 
-        & .step-number {
-          @apply border rounded-[50%] w-10 h-10 border-neutral-transparent-blue text-neutral-white flex justify-center items-center font-bold hover:cursor-pointer;
-        }
+  .step-number {
+    @apply border rounded-[50%] w-10 h-10 border-neutral-transparent-blue text-neutral-white flex justify-center items-center font-bold hover:cursor-pointer;
+  }
 
-        & .user-info-step {
-          @apply hidden xl:flex xl:flex-col xl:items-start xl:uppercase;
-        }
-      }
-    }
+  .user-info-step {
+    @apply hidden xl:flex xl:flex-col xl:items-start xl:uppercase;
   }
 
   /** Reusable/Repeated Styles */
@@ -107,20 +109,57 @@
     @apply bg-primary-dark-blue text-neutral-white w-32 h-12 hover:bg-dark-blue-hover rounded-[0.3125rem];
   }
 
-  /** form section */
+  .submit-form {
+    @apply w-full flex justify-end py-6 px-4 bg-neutral-white;
+  }
+
+  /** Form Section */
   .form-main-section {
-    @apply  w-full h-[calc(100svh-12rem)];
+    @apply w-full h-[calc(100svh-12rem)];
+  }
 
-    & .personal-info-form {
-      @apply h-full flex flex-col justify-between items-center;
+  .personal-info-form {
+    @apply h-full flex flex-col justify-between items-center;
+  }
 
-      & .personal-info-form-mobile {
-        @apply bg-neutral-white w-[90%] flex flex-col;
-      }
+  .personal-info-form-mobile {
+    @apply bg-neutral-white w-[90vw] flex flex-col py-5 px-5 rounded-lg -mbs-20.5 shadow-(--shadow-form);
+  }
 
-      & .submit-form {
-        @apply w-full flex justify-end py-6 px-4 bg-neutral-white;
-      }
+  .form-header {
+    @apply mt-12;
+
+    & h1 {
+      @apply mb-4 text-4xl text-primary-dark-blue font-bold;
     }
+
+    & p {
+      @apply text-neutral-dark-grey;
+    }
+  }
+
+  .form-body {
+    @apply mbs-16;
+  }
+
+  /** Input */
+  .input-container {
+    @apply flex flex-col mbe-8;
+  }
+
+  .label-and-error {
+    @apply flex justify-between;
+
+    & label {
+      @apply capitalize text-primary-dark-blue text-small-size mbe-2;
+    }
+  }
+
+  .error-message {
+    @apply text-primary-bright-red text-[0.75rem] text-end font-regular;
+  }
+
+  .input-container input {
+    @apply text-primary-dark-blue w-full h-12 rounded-lg border border-neutral-transparent-purple outline-none px-3 text-[1rem] hover:border-primary-purple-medium hover:border-[0.0938rem] focus:border-primary-purple-medium focus:border-[0.0938rem] focus-visible:border-primary-purple-medium focus-visible:border-[0.0938rem];
   }
 }
