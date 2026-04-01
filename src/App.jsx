@@ -51,7 +51,7 @@ function App() {
                   <section class="personal-info-form-mobile">  {/*<!-- * Personal Info Form Mobile Container -->*/}
 
                       <div class="form-header">
-                          <h2>Personal info</h2>
+                          <h1>Personal info</h1>
                           <p>Please provide your name, email address, and phone number.</p>
                       </div>
                       <div class="form-body">
