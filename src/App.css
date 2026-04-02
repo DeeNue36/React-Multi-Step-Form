@@ -44,6 +44,8 @@
   /** typography */
   --font-family-ubuntu: Ubuntu, sans-serif;
   --text-small-size: 0.875rem;
+  --text-regular-size: 1rem;
+  --text-large-size: 1.125rem;
   --font-weight-light: 300;
   --font-weight-regular: 400;
   --font-weight-medium: 500;
@@ -93,7 +95,7 @@
   }
 
   .progress-circle {
-    @apply xl:flex xl:items-center;
+    @apply md:flex md:items-center;
   }
 
   .step-number {
@@ -101,7 +103,7 @@
   }
 
   .user-info-step {
-    @apply hidden xl:flex xl:flex-col xl:items-start xl:uppercase;
+    @apply hidden md:flex md:flex-col md:items-start md:uppercase;
   }
 
   /** Reusable/Repeated Styles */
@@ -125,8 +127,14 @@
   }
 
   .previous-button {
-    @apply text-neutral-dark-grey font-medium;
+    @apply text-neutral-dark-grey font-medium hover:text-primary-dark-blue;
   }
+
+  .active {
+    @apply bg-neutral-transparent-light-blue border-primary-purple-medium border-[0.0938rem];
+  }
+
+
 
   /** Section 1: Personal Info Form Section */
   .form-main-section {
@@ -142,7 +150,7 @@
   } */
 
   .form-header {
-    @apply mt-12;
+    @apply mt-8;
 
     & h1 {
       @apply mb-4 text-4xl text-primary-dark-blue font-bold;
@@ -154,7 +162,7 @@
   }
 
   .form-body {
-    @apply mbs-16;
+    @apply mbs-8;
   }
 
   /** Input */
@@ -171,11 +179,11 @@
   }
 
   .error-message {
-    @apply text-primary-bright-red text-[0.75rem] text-end font-regular;
+    @apply text-primary-bright-red text-xs text-end font-regular;
   }
 
   .input-container input {
-    @apply text-primary-dark-blue w-full h-12 rounded-lg border border-neutral-transparent-purple outline-none px-3 text-[1rem] hover:border-primary-purple-medium hover:border-[0.0938rem] focus:border-primary-purple-medium focus:border-[0.0938rem] focus-visible:border-primary-purple-medium focus-visible:border-[0.0938rem];
+    @apply text-primary-dark-blue w-full h-12 rounded-lg border border-neutral-transparent-purple outline-none px-3 text-regular-size hover:border-primary-purple-medium hover:border-[0.0938rem] focus:border-primary-purple-medium focus:border-[0.0938rem] focus-visible:border-primary-purple-medium focus-visible:border-[0.0938rem];
   }
 
   .input-container input::placeholder {
@@ -184,7 +192,7 @@
 
   /** Section 2: Plan Selection  */
   .plan-error {
-    @apply text-primary-bright-red font-medium text-[1rem] mbe-[0.8rem];
+    @apply text-primary-bright-red font-medium text-regular-size mbe-[0.8rem];
   }
 
   .form-body:has(.plan-error:not(.hidden)) {
@@ -192,6 +200,70 @@
   }
 
   .plan-container {
-    @apply flex flex-col justify-between gap-y-4 mbe-8;
+    @apply flex flex-col justify-between gap-y-4 mbe-6;
+  }
+
+  .plan-card {
+    @apply flex justify-start items-center w-full h-24 gap-x-6 border border-neutral-transparent-purple cursor-pointer rounded-lg py-6 px-4 transition-[border] duration-250 ease-[ease-in] motion-reduce:transition-none hover:border-primary-purple-medium hover:border-[0.0938rem] active:bg-neutral-transparent-light-blue active:border-primary-purple-medium active:border-[0.0938rem];
+  }
+
+  .plan-card:has(.yearly-discount-duration:not(.hidden)) {
+    @apply h-28 transition-[height] duration-250 ease-[ease-out] motion-reduce:transition-none;
+  }
+
+  .plan-card-header {
+    @apply text-primary-dark-blue font-bold mbe-1 text-large-size;
+  }
+
+  .monthly-yearly-pricing {
+    @apply text-neutral-dark-grey;
+  }
+
+  .yearly-discount-duration {
+    @apply text-small-size  mbs-1;
+  }
+
+  /** Plan Section: Billing Toggle */
+  .billing-container {
+    @apply flex items-center justify-center gap-6 bg-neutral-transparent-blue py-[0.8rem] px-6 rounded-lg w-full my-4 mx-auto;
+  }
+
+  .billing-option-container {
+    & label {
+      @apply font-medium cursor-pointer text-neutral-dark-grey text-small-size transition-colors duration-300 ease-[ease] motion-reduce:transition-none;
+    }
+
+    & input[type='radio'] {
+      @apply hidden;
+    }
+
+    & input[type='radio']:checked + label {
+      @apply text-primary-dark-blue font-bold;
+    }
+  }
+
+  /** Main Toggle */
+  .toggle-container {
+    @apply relative w-11.25 h-5.5 bg-primary-dark-blue rounded-2xl cursor-pointer transition-[background-color] duration-300 ease-[ease] motion-reduce:transition-none;
+
+    & label {
+      @apply hidden relative text-[0rem] -z-6;
+    }
+
+    & input[type='range'] {
+      @apply absolute w-full h-full opacity-0 cursor-pointer z-2 appearance-none;
+    }
+  }
+
+  .toggle-thumb {
+    @apply absolute top-0.75 left-1 w-4 h-4 bg-neutral-white rounded-[50%] pointer-events-none transition-[left] duration-300 ease-[ease] motion-reduce:transition-none;
+  }
+
+  .toggle-container.active .toggle-thumb {
+    @apply left-6.25;
+  }
+
+  .toggle-thumb.clicked {
+    @apply transform scale-[0.64] transition-all duration-400 ease-[ease] motion-reduce:transition-none;
   }
 }
