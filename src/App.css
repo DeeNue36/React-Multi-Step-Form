@@ -108,6 +108,15 @@
     @apply hidden md:flex md:flex-col md:items-start md:uppercase;
   }
 
+  .step {
+    @apply md:text-neutral-transparent-purple md:text-small-size md:font-light mbe-[0.313rem];
+  }
+
+  .step-name {
+    @apply text-neutral-white font-bold tracking-[0.125rem] align-baseline;
+  }
+
+
   /** Reusable/Repeated Styles */
   .form {
     @apply h-full flex flex-col justify-between items-center;
@@ -136,7 +145,7 @@
 
   /** Section 1: Personal Info Form Section */
   .form-main-section {
-    @apply w-full h-[calc(100svh-12rem)];
+    @apply w-full h-[calc(100svh-12rem)] flex flex-col justify-center items-center md:flex-row;
   }
 
   /* .personal-info-form {
@@ -320,4 +329,89 @@
   .addon-price, .addon-pricing-cycle {
     @apply text-primary-purple-medium;
   }
+
+
+  /** Section 4: Summary Section */
+  .summary-card {
+    @apply bg-summary-bg rounded-[0.625rem] py-8 px-6;
+  }
+
+  .selected-plan-and-price {
+    @apply flex items-center justify-between mbe-6;
+  }
+
+  .divider {
+    @apply w-full border-b border-neutral-transparent-purple mbs-4 mbe-6 mx-0;
+  }
+
+  .user-plan-selected {
+    @apply text-regular-size font-medium text-primary-dark-blue mbe-1;
+  }
+
+  .change-plan-btn {
+    @apply border-none outline-none bg-transparent text-neutral-dark-grey underline underline-offset-2 text-small-size transition-colors duration-200 ease-[ease-in] motion-reduce:transition-none hover:text-primary-purple-medium;
+  }
+
+  .selected-plan-price{ 
+    @apply self-center;
+
+    & span {
+      @apply text-regular-size font-medium text-primary-dark-blue;
+    }
+  }
+
+  .selected-addon-and-price {
+    @apply flex justify-between items-center mbe-6 last:mbe-0;
+
+    /* & :last-child {
+      @apply mbe-0;
+    } */
+  }
+
+  .selected-addon {
+    @apply text-small-size text-neutral-dark-grey capitalize;
+  }
+
+  .selected-addon-price {
+    @apply text-small-size text-primary-dark-blue;
+  }
+
+  .total-cost-container {
+    @apply w-[90%] flex justify-between items-center mbs-8 mbe-[1.64rem] mx-auto;
+  }
+
+  .total-cost {
+    @apply text-small-size text-neutral-dark-grey;
+  }
+
+  .total-cost-value {
+    @apply text-[1.25rem] font-bold text-primary-purple-medium;
+  }
+
+  .submit-btns > .next-button {
+    @apply bg-primary-purple-medium hover:bg-purple-medium-hover;
+  }
+
+
+  /** Section 5: Thank You Section */
+  .thank-you-section {
+    @apply justify-center text-center;
+
+    & img, & h2 {
+      @apply mbe-8;
+    }
+  }
+
+  .thank-you-text {
+    @apply text-[2.25rem] font-bold text-primary-dark-blue;
+  }
+
+  .thank-you-paragraph {
+    @apply text-regular-size text-neutral-dark-grey leading-6;
+
+    & a {
+      @apply text-neutral-dark-grey no-underline;
+    }
+  }
+
 }
