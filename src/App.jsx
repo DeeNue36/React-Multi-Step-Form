@@ -203,7 +203,7 @@ function App() {
 
 
               {/* <!-- * Step 3: Add-ons Section --> */}
-              <section className="form add-ons-section">
+              <section className="form add-ons-section hidden">
                   <section className="form-mobile add-ons-section-mobile"> {/*<!-- * Add-ons Section Container Mobile -->*/}
 
                       <div className="form-header">
@@ -300,11 +300,11 @@ function App() {
 
 
               {/* <!-- * Step 4: Summary Section--> */}
-              <section className="summary-section hidden">
-                  <section className="summary-section-mobile"> {/*<!-- * Summary Section Container on Mobile  -->*/}
+              <section className="form summary-section">
+                  <section className="form-mobile summary-section-mobile"> {/*<!-- * Summary Section Container on Mobile  -->*/}
 
                       <div className="form-header">
-                          <h2>Finishing up</h2>
+                          <h1>Finishing up</h1>
                           <p>Double-check everything looks OK before confirming.</p>
                       </div>
                       <div className="summary-card-container">
