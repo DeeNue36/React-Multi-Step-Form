@@ -92,7 +92,7 @@ function App() {
 
 
               {/* <!-- * Step 2: Select Plan Section --> */}
-              <section className="form select-plan-section">
+              <section className="form select-plan-section hidden">
                   <section className="form-mobile select-plan-section-mobile">  {/*<!-- * Select Plan Form Mobile Container -->*/}
 
                       <div className="form-header">
@@ -203,11 +203,11 @@ function App() {
 
 
               {/* <!-- * Step 3: Add-ons Section --> */}
-              <section className="add-ons-section hidden">
-                  <section className="add-ons-section-mobile"> {/*<!-- * Add-ons Section Container Mobile -->*/}
+              <section className="form add-ons-section">
+                  <section className="form-mobile add-ons-section-mobile"> {/*<!-- * Add-ons Section Container Mobile -->*/}
 
                       <div className="form-header">
-                          <h2>Pick add-ons</h2>
+                          <h1>Pick add-ons</h1>
                           <p>Add-ons help enhance your gaming experience.</p>
                       </div>
 
