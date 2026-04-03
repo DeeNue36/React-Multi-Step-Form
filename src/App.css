@@ -57,6 +57,9 @@
   --background-image-mobile: url('../public/Images/bg-sidebar-mobile.svg');
   --background-image-desktop: url('../public/Images/bg-sidebar-desktop.svg');
 
+  /** Custom Checkbox Image */
+  --background-image-checkbox-checked: url('../public/Images/icon-checkmark.svg');
+
 }
 
 @layer base {
@@ -73,11 +76,6 @@
   .hidden {
     /* @apply hidden; */
   }
-
-  /* .active {
-    @apply bg-primary-lighter-blue text-primary-dark-blue;
-  } */
-
 }
 
 @layer components {
@@ -100,6 +98,10 @@
 
   .step-number {
     @apply border rounded-[50%] w-10 h-10 border-neutral-transparent-blue text-neutral-white flex justify-center items-center font-bold hover:cursor-pointer;
+  }
+
+  .step-number.active {
+    @apply bg-primary-lighter-blue text-primary-dark-blue;
   }
 
   .user-info-step {
@@ -186,6 +188,7 @@
     @apply text-neutral-dark-grey;
   }
 
+
   /** Section 2: Plan Selection  */
   .plan-error {
     @apply text-primary-bright-red font-medium text-regular-size mbe-[0.8rem];
@@ -265,5 +268,56 @@
 
   .toggle-thumb.clicked {
     @apply transform scale-[0.64] transition-all duration-400 ease-[ease] motion-reduce:transition-none;
+  }
+
+
+  /** Section 3: Add-ons Selection Section */
+  .add-ons-container, .summary-card-container {
+    @apply mbs-8;
+  }
+
+  .addon-card {
+    @apply flex justify-between items-center py-6 px-[0.6rem] md:px-4 rounded-lg border border-neutral-transparent-purple cursor-pointer mbe-4 transition-[border] duration-300 ease-[ease] motion-reduce:transition-none;
+
+    & :hover, & :focus, &:focus-visible {
+      @apply outline-none cursor-pointer border border-primary-purple-medium;
+    }
+  }
+
+  .addon-card.active {
+    @apply outline-none cursor-pointer border-primary-purple-medium bg-neutral-transparent-light-blue border-[0.0938rem];
+  }
+
+  .addon-card-body {
+    @apply flex items-center gap-[0.8rem] md:gap-6;
+  }
+
+  /** Custom Checkbox Styling */
+  .addon-card-body input[type='checkbox'] {
+    @apply w-5 h-5 absolute opacity-0 cursor-pointer;
+  }
+
+  .custom-checkbox {
+    @apply w-5 h-5 border border-neutral-transparent-purple rounded-[0.3125rem] inline-block cursor-pointer bg-transparent shrink-0 transition-all duration-200 ease-[ease-in] motion-reduce:transition-none;
+  }
+
+  .addon-card-body input[type="checkbox"]:checked + .custom-checkbox {
+    @apply bg-primary-purple-medium border-primary-purple-medium bg-checkbox-checked bg-no-repeat bg-center bg-size-[0.75rem];
+  }
+
+  .addon-details {
+    @apply flex flex-col cursor-pointer;
+
+    & label {
+      @apply text-regular-size font-medium text-primary-dark-blue mbe-px;
+    }
+
+    & p {
+      @apply text-small-size text-neutral-dark-grey;
+    }
+  }
+
+  .addon-price, .addon-pricing-cycle {
+    @apply text-primary-purple-medium;
   }
 }
