@@ -74,9 +74,9 @@
     /* @apply hidden; */
   }
 
-  .active {
+  /* .active {
     @apply bg-primary-lighter-blue text-primary-dark-blue;
-  }
+  } */
 
 }
 
@@ -128,10 +128,6 @@
 
   .previous-button {
     @apply text-neutral-dark-grey font-medium hover:text-primary-dark-blue;
-  }
-
-  .active {
-    @apply bg-neutral-transparent-light-blue border-primary-purple-medium border-[0.0938rem];
   }
 
 
@@ -205,6 +201,10 @@
 
   .plan-card {
     @apply flex justify-start items-center w-full h-24 gap-x-6 border border-neutral-transparent-purple cursor-pointer rounded-lg py-6 px-4 transition-[border] duration-250 ease-[ease-in] motion-reduce:transition-none hover:border-primary-purple-medium hover:border-[0.0938rem] active:bg-neutral-transparent-light-blue active:border-primary-purple-medium active:border-[0.0938rem];
+  }
+
+  .plan-card.active {
+    @apply bg-neutral-transparent-light-blue border-primary-purple-medium border-[0.0938rem];
   }
 
   .plan-card:has(.yearly-discount-duration:not(.hidden)) {
