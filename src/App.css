@@ -87,12 +87,12 @@
 
 @layer components {
   .form-container {
-    @apply min-h-screen min-w-screen md:w-[clamp(48rem,90vw,75rem)] md:h-full md:min-h-180 md:flex md:justify-center md:items-center md:bg-neutral-white md:rounded-lxg md:p-4 md:my-8 md:mx-auto md:max-w-300;
+    @apply min-h-screen max-md:min-w-screen md:max-lg:w-[clamp(45rem,96vw,64rem)] lg:w-[clamp(48rem,90vw,75rem)] md:h-full md:min-h-180 md:flex md:justify-center md:items-center md:bg-neutral-white md:rounded-lxg md:p-4 md:my-8 md:mx-auto md:max-w-300;
   }
 
   /** Progress Section */
   .progress-section {
-    @apply bg-mobile h-48 w-full bg-no-repeat bg-cover bg-center flex justify-center md:bg-desktop md:h-172 md:w-[30vw] md:rounded-lxg md:flex-col md:items-start md:ps-9;
+    @apply bg-mobile h-48 w-full bg-no-repeat bg-cover bg-center flex max-md:justify-center md:bg-desktop md:h-172 md:w-[30vw] md:rounded-lxg md:flex-col md:items-start md:ps-9;
   }
 
   .progress-section-mobile {
@@ -100,11 +100,11 @@
   }
 
   .progress-circle {
-    @apply md:flex md:items-center;
+    @apply md:flex md:items-center md:w-46 md:mbs-10;
   }
 
   .step-number {
-    @apply border rounded-[50%] w-10 h-10 border-neutral-transparent-blue text-neutral-white flex justify-center items-center font-bold hover:cursor-pointer;
+    @apply border rounded-[50%] w-10 h-10 border-neutral-transparent-blue text-neutral-white flex justify-center items-center font-bold hover:cursor-pointer md:me-4;
   }
 
   .step-number.active {
