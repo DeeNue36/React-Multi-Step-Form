@@ -53,6 +53,10 @@
   /** shadow */
   --shadow-form: 0rem 0.5rem 0.5rem 0rem var(--color-neutral-transparent-purple);
 
+  /** borders */
+  --radius-lxg: 0.625rem;
+  --border-active-width: 0.0938rem;
+
   /** background images */
   --background-image-mobile: url('../public/Images/bg-sidebar-mobile.svg');
   --background-image-desktop: url('../public/Images/bg-sidebar-desktop.svg');
@@ -60,11 +64,14 @@
   /** Custom Checkbox Image */
   --background-image-checkbox-checked: url('../public/Images/icon-checkmark.svg');
 
+  --breakpoint-xxs: 23.4375rem;
+  --breakpoint-lmb: 26.5rem;
+
 }
 
 @layer base {
   body {
-    @apply bg-neutral-transparent-blue min-h-screen font-family-ubuntu overflow-x-hidden;
+    @apply bg-neutral-transparent-blue min-h-screen font-family-ubuntu overflow-x-hidden md:flex md:flex-col md:justify-center md:items-center;
   }
 
   button, input {
@@ -79,17 +86,17 @@
 }
 
 @layer components {
-  .container {
-    @apply min-h-screen min-w-screen;
+  .form-container {
+    @apply min-h-screen min-w-screen md:w-[clamp(48rem,90vw,75rem)] md:h-full md:min-h-180 md:flex md:justify-center md:items-center md:bg-neutral-white md:rounded-lxg md:p-4 md:my-8 md:mx-auto md:max-w-300;
   }
 
   /** Progress Section */
   .progress-section {
-    @apply bg-mobile h-48 w-full bg-no-repeat bg-cover bg-center flex justify-center;
+    @apply bg-mobile h-48 w-full bg-no-repeat bg-cover bg-center flex justify-center md:bg-desktop md:h-172 md:w-[30vw] md:rounded-lxg md:flex-col md:items-start md:ps-9;
   }
 
   .progress-section-mobile {
-    @apply flex justify-between items-center w-1/2 mbe-16;
+    @apply max-md:flex max-md:justify-between max-md:items-center max-md:w-3/4 max-xxs:w-1/2 max-md:mbe-16;
   }
 
   .progress-circle {
@@ -119,18 +126,19 @@
 
   /** Reusable/Repeated Styles */
   .form {
-    @apply h-full flex flex-col justify-between items-center;
+    @apply w-full h-full flex flex-col justify-between max-md:items-center md:w-[clamp(32rem,80%,90%)];
   }
 
   .form-mobile {
-    @apply bg-neutral-white w-[90vw] flex flex-col py-5 px-5 rounded-lg -mbs-20.5 shadow-(--shadow-form);
+    @apply max-md:bg-neutral-white max-md:w-[90vw] max-md:flex max-md:flex-col max-md:py-5 max-md:px-5 max-md:rounded-lg max-md:-mbs-20.5 max-md:shadow-(--shadow-form);
   }
+
   .next-button {
     @apply bg-primary-dark-blue text-neutral-white w-32 h-12 hover:bg-dark-blue-hover rounded-[0.3125rem];
   }
 
   .submit-form {
-    @apply w-full flex justify-end py-6 px-4 bg-neutral-white;
+    @apply w-full flex justify-end max-md:py-6 max-md:px-4 max-md:bg-neutral-white mt-4 max-lmb:mt-4 md:mbs-8;
   }
 
   .submit-btns {
@@ -145,7 +153,7 @@
 
   /** Section 1: Personal Info Form Section */
   .form-main-section {
-    @apply w-full h-[calc(100svh-12rem)] flex flex-col justify-center items-center md:flex-row;
+    @apply w-full h-[calc(100svh-2rem)] lmb:h-[calc(100svh-12rem)] flex flex-col justify-center md:flex-row md:w-[70vw] md:h-172 md:items-center md:px-8;
   }
 
   /* .personal-info-form {
@@ -157,7 +165,7 @@
   } */
 
   .form-header {
-    @apply mt-8;
+    @apply mt-6;
 
     & h1 {
       @apply mb-4 text-4xl text-primary-dark-blue font-bold;
@@ -169,12 +177,12 @@
   }
 
   .form-body {
-    @apply mbs-8;
+    @apply mbs-6;
   }
 
   /** Input */
   .input-container {
-    @apply flex flex-col mbe-8;
+    @apply flex flex-col mbe-8; /* last:mbe-0 */
   }
 
   .label-and-error {
@@ -190,7 +198,7 @@
   }
 
   .input-container input {
-    @apply text-primary-dark-blue w-full h-12 rounded-lg border border-neutral-transparent-purple outline-none px-3 text-regular-size hover:border-primary-purple-medium hover:border-[0.0938rem] focus:border-primary-purple-medium focus:border-[0.0938rem] focus-visible:border-primary-purple-medium focus-visible:border-[0.0938rem];
+    @apply text-primary-dark-blue w-full h-12 rounded-lg border border-neutral-transparent-purple outline-none px-3 text-regular-size hover:border-primary-purple-medium hover:border-(length:--border-active-width) focus:border-primary-purple-medium focus:border-(length:--border-active-width) focus-visible:border-primary-purple-medium focus-visible:border-(length:--border-active-width);
   }
 
   .input-container input::placeholder {
@@ -212,11 +220,11 @@
   }
 
   .plan-card {
-    @apply flex justify-start items-center w-full h-24 gap-x-6 border border-neutral-transparent-purple cursor-pointer rounded-lg py-6 px-4 transition-[border] duration-250 ease-[ease-in] motion-reduce:transition-none hover:border-primary-purple-medium hover:border-[0.0938rem] active:bg-neutral-transparent-light-blue active:border-primary-purple-medium active:border-[0.0938rem];
+    @apply flex justify-start items-center w-full h-24 gap-x-6 border border-neutral-transparent-purple cursor-pointer rounded-lg py-6 px-4 transition-[border] duration-250 ease-[ease-in] motion-reduce:transition-none hover:border-primary-purple-medium hover:border-(length:--border-active-width) active:bg-neutral-transparent-light-blue active:border-primary-purple-medium active:border-(length:--border-active-width);
   }
 
   .plan-card.active {
-    @apply bg-neutral-transparent-light-blue border-primary-purple-medium border-[0.0938rem];
+    @apply bg-neutral-transparent-light-blue border-primary-purple-medium border-(length:--border-active-width);
   }
 
   .plan-card:has(.yearly-discount-duration:not(.hidden)) {
@@ -294,7 +302,7 @@
   }
 
   .addon-card.active {
-    @apply outline-none cursor-pointer border-primary-purple-medium bg-neutral-transparent-light-blue border-[0.0938rem];
+    @apply outline-none cursor-pointer border-primary-purple-medium bg-neutral-transparent-light-blue border-(length:--border-active-width);
   }
 
   .addon-card-body {
@@ -333,7 +341,7 @@
 
   /** Section 4: Summary Section */
   .summary-card {
-    @apply bg-summary-bg rounded-[0.625rem] py-8 px-6;
+    @apply bg-summary-bg rounded-lxg py-8 px-6;
   }
 
   .selected-plan-and-price {
@@ -415,3 +423,5 @@
   }
 
 }
+
+/* TODO: For screens where the mobile form section touches the button section apply margin top on '.submit-form' and overflow-y on '.form-mobile' */
