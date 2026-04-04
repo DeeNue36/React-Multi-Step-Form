@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-      <div className="container">
+      <div className="form-container">
           {/* <!-- * Progress Section --> */}
           <section className="progress-section">
               <div className="progress-section-mobile"> {/* <!-- * Progress Section Mobile -->*/}
@@ -49,7 +49,7 @@ function App() {
           <main className="form-main-section">
 
               {/* <!-- * Step 1: Personal Info Form --> */}
-              <form className="form personal-info-form hidden">
+              <form className="form personal-info-form">
 
                   <section className=" form-mobile personal-info-form-mobile">  {/*<!-- * Personal Info Form Mobile Container -->*/}
 
@@ -300,7 +300,7 @@ function App() {
 
 
               {/* <!-- * Step 4: Summary Section--> */}
-              <section className="form summary-section">
+              <section className="form summary-section hidden">
                   <section className="form-mobile summary-section-mobile"> {/*<!-- * Summary Section Container on Mobile  -->*/}
 
                       <div className="form-header">
@@ -343,7 +343,7 @@ function App() {
               </section>
 
               {/* <!-- * Step 5: Thank You Section --> */}
-              <section className="thank-you-section hidden"></section>
+              <section className="form form-mobile thank-you-section hidden"></section>
           </main>
       </div>
     </>
