@@ -92,7 +92,7 @@
 
   /** Progress Section */
   .progress-section {
-    @apply bg-mobile h-48 w-full bg-no-repeat bg-cover bg-center flex max-md:justify-center md:bg-desktop md:h-172 md:w-[30vw] md:rounded-lxg md:flex-col md:items-start md:ps-9;
+    @apply bg-mobile h-48 w-full bg-no-repeat bg-cover bg-center flex max-md:justify-center md:bg-desktop md:h-172 md:w-[30vw] md:rounded-lxg md:flex-col md:items-start md:max-lg:ps-4 lg:ps-9;
   }
 
   .progress-section-mobile {
@@ -177,7 +177,7 @@
   }
 
   .form-body {
-    @apply mbs-6;
+    @apply mbs-6 md:mbs-16;
   }
 
   /** Input */
@@ -216,11 +216,11 @@
   }
 
   .plan-container {
-    @apply flex flex-col justify-between gap-y-4 mbe-6;
+    @apply flex max-md:flex-col justify-between gap-y-4 mbe-6 md:mbe-8;
   }
 
   .plan-card {
-    @apply flex justify-start items-center w-full h-24 gap-x-6 border border-neutral-transparent-purple cursor-pointer rounded-lg py-6 px-4 transition-[border] duration-250 ease-[ease-in] motion-reduce:transition-none hover:border-primary-purple-medium hover:border-(length:--border-active-width) active:bg-neutral-transparent-light-blue active:border-primary-purple-medium active:border-(length:--border-active-width);
+    @apply flex justify-start items-center w-full h-24 gap-x-6 border border-neutral-transparent-purple cursor-pointer rounded-lg py-6 px-4 transition-[border] duration-250 ease-[ease-in] motion-reduce:transition-none hover:border-primary-purple-medium hover:border-(length:--border-active-width) active:bg-neutral-transparent-light-blue active:border-primary-purple-medium active:border-(length:--border-active-width) md:flex-col md:w-[30.6%] md:h-55;
   }
 
   .plan-card.active {
@@ -396,7 +396,7 @@
     @apply text-[1.25rem] font-bold text-primary-purple-medium;
   }
 
-  .submit-btns > .next-button {
+  .submit-btns > .confirm-btn {
     @apply bg-primary-purple-medium hover:bg-purple-medium-hover;
   }
 
