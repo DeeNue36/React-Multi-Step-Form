@@ -220,8 +220,8 @@
   }
 
   .plan-card {
-    @apply flex justify-start items-center w-full h-24 gap-x-6 border border-neutral-transparent-purple cursor-pointer rounded-lg py-6 px-4 transition-[border] duration-250 ease-[ease-in] motion-reduce:transition-none hover:border-primary-purple-medium hover:border-(length:--border-active-width) active:bg-neutral-transparent-light-blue active:border-primary-purple-medium active:border-(length:--border-active-width) md:flex-col md:w-[30.6%] md:h-55;
-  }
+    @apply flex justify-start max-md:items-center w-full h-24 gap-x-6 border border-neutral-transparent-purple cursor-pointer rounded-lg py-6 px-4 transition-[border] duration-200 ease-[ease-in] motion-reduce:transition-none hover:border-primary-purple-medium hover:border-(length:--border-active-width) active:bg-neutral-transparent-light-blue active:border-primary-purple-medium active:border-(length:--border-active-width) md:flex-col md:justify-between md:w-[30.6%] md:h-55;
+  } /*Remove active pseudo class after testing that the style below works*/
 
   .plan-card.active {
     @apply bg-neutral-transparent-light-blue border-primary-purple-medium border-(length:--border-active-width);
