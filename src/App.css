@@ -96,7 +96,7 @@
   }
 
   .progress-section-mobile {
-    @apply max-md:flex max-md:justify-between max-md:items-center max-md:w-3/4 max-xxs:w-1/2 max-md:mbe-16;
+    @apply max-md:flex max-md:justify-between max-md:items-center max-md:w-3/5 max-xxs:w-1/2 max-md:mbe-16;
   }
 
   .progress-circle {
