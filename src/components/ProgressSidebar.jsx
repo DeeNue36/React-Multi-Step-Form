@@ -10,7 +10,7 @@ export const ProgressSidebar = () => {
 
                 {[1,2,3,4].map(num => (
                     <div key={num} className="progress-circle">
-                    <span className={`step-number ${currentStep >= num ? 'active' : ''}`}>{num}</span>
+                    <span className={`step-number ${currentStep === num ? 'active' : ''}`}>{num}</span>
                     <div className="user-info-step">
                         <span className="step">{`Step ${num}`}</span>
                         <span className="step-name">{
