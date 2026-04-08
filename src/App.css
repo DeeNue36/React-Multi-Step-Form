@@ -149,6 +149,10 @@
     @apply text-neutral-dark-grey font-medium hover:text-primary-dark-blue;
   }
 
+  .input-container input.error {
+    @apply border-primary-bright-red;
+  }
+
 
 
   /** Section 1: Personal Info Form Section */
@@ -194,7 +198,7 @@
   }
 
   .error-message {
-    @apply text-primary-bright-red text-xs text-end font-regular;
+    @apply text-primary-bright-red text-xs text-end font-regular md:text-small-size md:font-medium;
   }
 
   .input-container input {
