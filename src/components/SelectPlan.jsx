@@ -2,11 +2,22 @@ import arcade from '/Images/icon-arcade.svg'
 import advanced from '/Images/icon-advanced.svg'
 import pro from '/Images/icon-pro.svg'
 import { useStepProgress } from '../store/stepProgress'
+import { usePlanSelection } from '../store/planSelection'
 
 export const SelectPlan = () => {
     // const {nextStep, prevStep} = useStepProgress();
     const nextStep = useStepProgress((state) => state.nextStep);
     const prevStep = useStepProgress((state) => state.prevStep);
+    const {selectedPlan, selectPlan, planError, setPlanError} = usePlanSelection();
+
+    const handleNextStep = () => {
+        if (!selectedPlan) {
+            setPlanError('Please select a plan to continue');
+            return;
+        }
+        setPlanError('');
+        nextStep();
+    }
 
     {/* <!-- * Step 2: Select Plan Section --> */}
     return (
@@ -19,12 +30,12 @@ export const SelectPlan = () => {
                 </div>
 
                 <div className="form-body">
-                    <span className="plan-error hidden"></span>
+                    <span className="plan-error">{planError}</span>
                     <div className="plan-container">
                         {/* <!-- * Plan Cards --> */}
 
                         {/* <!-- * Plan Card 1: Arcade Plan --> */}
-                        <div className="plan-card">
+                        <div className={`plan-card ${selectedPlan === 'arcade' ? 'active' : ''}`} onClick={() => selectPlan('arcade')}>
                             <div className="plan-card-image">
                                 <img src={arcade} alt="Arcade Plan Image"/>
                             </div>
@@ -45,7 +56,7 @@ export const SelectPlan = () => {
                         </div>
 
                         {/* <!-- * Plan Card 2: Advanced Plan --> */}
-                        <div className="plan-card">
+                        <div className={`plan-card ${selectedPlan === 'advanced' ? 'active' : ''}`} onClick={() => selectPlan('advanced')}>
                             <div className="plan-card-image">
                                 <img src={advanced} alt="Advanced Plan Image"/>
                             </div>
@@ -66,7 +77,7 @@ export const SelectPlan = () => {
                         </div>
 
                         {/* <!-- * Plan Card 3: Pro Plan --> */}
-                        <div className="plan-card">
+                        <div className={`plan-card ${selectedPlan === 'pro' ? 'active' : ''}`} onClick={() => selectPlan('pro')}>
                             <div className="plan-card-image">
                                 <img src={pro} alt="Pro Plan Image"/>
                             </div>
@@ -113,7 +124,7 @@ export const SelectPlan = () => {
                 <button type="button" className="previous-button" onClick={prevStep}>
                     Go Back
                 </button>
-                <button type="button" className="next-button" onClick={nextStep}>
+                <button type="button" className="next-button" onClick={handleNextStep}>
                     Next Step
                 </button>
             </div>
