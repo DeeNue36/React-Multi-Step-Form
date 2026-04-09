@@ -8,7 +8,19 @@ export const SelectPlan = () => {
     // const {nextStep, prevStep} = useStepProgress();
     const nextStep = useStepProgress((state) => state.nextStep);
     const prevStep = useStepProgress((state) => state.prevStep);
-    const {selectedPlan, selectPlan, planError, setPlanError} = usePlanSelection();
+    const {
+        selectedPlan, 
+        selectPlan, 
+        planError, 
+        setPlanError
+    } = usePlanSelection();
+
+    //* Plans Array
+    const plans =[
+        {id: 'arcade', name: 'Arcade', price: 9, image: arcade },
+        {id: 'advanced', name: 'Advanced', price: 12, image: advanced },
+        {id: 'pro', name: 'Pro', price: 15, image: pro }
+    ];
 
     const handleNextStep = () => {
         if (!selectedPlan) {
@@ -30,72 +42,32 @@ export const SelectPlan = () => {
                 </div>
 
                 <div className="form-body">
-                    <span className="plan-error">{planError}</span>
+                    {planError && <span className="plan-error">{planError}</span>}
+                    
                     <div className="plan-container">
                         {/* <!-- * Plan Cards --> */}
-
-                        {/* <!-- * Plan Card 1: Arcade Plan --> */}
-                        <div className={`plan-card ${selectedPlan === 'arcade' ? 'active' : ''}`} onClick={() => selectPlan('arcade')}>
-                            <div className="plan-card-image">
-                                <img src={arcade} alt="Arcade Plan Image"/>
-                            </div>
-                            <div className="plan-card-body">
-                                <h3 className="plan-card-header">
-                                    Arcade
-                                </h3>
-                                <div className="monthly-yearly-pricing">
-                                    <span className="price">
-                                        $9
-                                    </span>
-                                    <span className="pricing-cycle">
-                                        /mo
-                                    </span>
+                        {plans.map(({id, name, price, image}) => (
+                            <div
+                                key={id}
+                                className={`plan-card ${selectedPlan === id ? 'active' : ''}`}
+                                onClick={() => selectPlan(id)} 
+                            >
+                                <div className="plan-card-image">
+                                    <img src={image} alt={`${name} Plan Image`} />
                                 </div>
-                                <p className="yearly-discount-duration hidden"></p>
-                            </div>
-                        </div>
 
-                        {/* <!-- * Plan Card 2: Advanced Plan --> */}
-                        <div className={`plan-card ${selectedPlan === 'advanced' ? 'active' : ''}`} onClick={() => selectPlan('advanced')}>
-                            <div className="plan-card-image">
-                                <img src={advanced} alt="Advanced Plan Image"/>
-                            </div>
-                            <div className="plan-card-body">
-                                <h3 className="plan-card-header">
-                                    Advanced
-                                </h3>
-                                <div className="monthly-yearly-pricing">
-                                    <span className="price">
-                                        $12
-                                    </span>
-                                    <span className="pricing-cycle">
-                                        /mo
-                                    </span>
+                                <div className="plan-card-body">
+                                    <h3 className="plan-card-header">
+                                        {name}
+                                    </h3>
+                                    <div className="monthly-yearly-pricing">
+                                        <span className="price">${price}</span>
+                                        <span className="pricing-cycle">/mo</span>
+                                    </div>
+                                    <p className="yearly-discount-duration hidden"></p>
                                 </div>
-                                <p className="yearly-discount-duration hidden"></p>
                             </div>
-                        </div>
-
-                        {/* <!-- * Plan Card 3: Pro Plan --> */}
-                        <div className={`plan-card ${selectedPlan === 'pro' ? 'active' : ''}`} onClick={() => selectPlan('pro')}>
-                            <div className="plan-card-image">
-                                <img src={pro} alt="Pro Plan Image"/>
-                            </div>
-                            <div className="plan-card-body">
-                                <h3 className="plan-card-header">
-                                    Pro
-                                </h3>
-                                <div className="monthly-yearly-pricing">
-                                    <span className="price">
-                                        $15
-                                    </span>
-                                    <span className="pricing-cycle">
-                                        /mo
-                                    </span>
-                                </div>
-                                <p className="yearly-discount-duration hidden"></p>
-                            </div>
-                        </div>
+                        ))}
                     </div>
 
                     {/* <!-- * Billing Options: Monthly and Yearly --> */}
@@ -131,3 +103,66 @@ export const SelectPlan = () => {
         </section>
     )
 }
+
+                        {/* <!-- * Plan Card 1: Arcade Plan --> */}
+                        {/* <div className={`plan-card ${selectedPlan === 'arcade' ? 'active' : ''}`} onClick={() => selectPlan('arcade')}>
+                            <div className="plan-card-image">
+                                <img src={arcade} alt="Arcade Plan Image"/>
+                            </div>
+                            <div className="plan-card-body">
+                                <h3 className="plan-card-header">
+                                    Arcade
+                                </h3>
+                                <div className="monthly-yearly-pricing">
+                                    <span className="price">
+                                        $9
+                                    </span>
+                                    <span className="pricing-cycle">
+                                        /mo
+                                    </span>
+                                </div>
+                                <p className="yearly-discount-duration hidden"></p>
+                            </div>
+                        </div> */}
+
+                        {/* <!-- * Plan Card 2: Advanced Plan --> */}
+                        {/* <div className={`plan-card ${selectedPlan === 'advanced' ? 'active' : ''}`} onClick={() => selectPlan('advanced')}>
+                            <div className="plan-card-image">
+                                <img src={advanced} alt="Advanced Plan Image"/>
+                            </div>
+                            <div className="plan-card-body">
+                                <h3 className="plan-card-header">
+                                    Advanced
+                                </h3>
+                                <div className="monthly-yearly-pricing">
+                                    <span className="price">
+                                        $12
+                                    </span>
+                                    <span className="pricing-cycle">
+                                        /mo
+                                    </span>
+                                </div>
+                                <p className="yearly-discount-duration hidden"></p>
+                            </div>
+                        </div> */}
+
+                        {/* <!-- * Plan Card 3: Pro Plan --> */}
+                        {/* <div className={`plan-card ${selectedPlan === 'pro' ? 'active' : ''}`} onClick={() => selectPlan('pro')}>
+                            <div className="plan-card-image">
+                                <img src={pro} alt="Pro Plan Image"/>
+                            </div>
+                            <div className="plan-card-body">
+                                <h3 className="plan-card-header">
+                                    Pro
+                                </h3>
+                                <div className="monthly-yearly-pricing">
+                                    <span className="price">
+                                        $15
+                                    </span>
+                                    <span className="pricing-cycle">
+                                        /mo
+                                    </span>
+                                </div>
+                                <p className="yearly-discount-duration hidden"></p>
+                            </div>
+                        </div> */}
