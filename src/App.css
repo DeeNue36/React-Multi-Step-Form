@@ -67,6 +67,13 @@
   --breakpoint-xxs: 23.4375rem;
   --breakpoint-lmb: 26.5rem;
 
+  --animate-thumbBounce: thumbBounce 0.3s ease-in-out;
+  @keyframes thumbBounce {
+    0% { transform: scale(1) translateY(0); }
+    50% { transform: scale(0.64) translateY(-2px); }
+    100% { transform: scale(1) translateY(0); }
+  }
+
 }
 
 @layer base {
@@ -280,15 +287,19 @@
   }
 
   .toggle-thumb {
-    @apply absolute top-0.75 left-1 w-4 h-4 bg-neutral-white rounded-[50%] pointer-events-none transition-[left] duration-300 ease-[ease] motion-reduce:transition-none;
+    @apply absolute top-0.75 left-1 w-4 h-4 bg-neutral-white rounded-[50%] pointer-events-none transition-[left,transform] duration-300 ease-[ease] motion-reduce:transition-none;
   }
 
   .billing-container.active .toggle-thumb {
     @apply left-6.25;
   }
 
-  .toggle-thumb.clicked {
+  /* .toggle-thumb.clicked {
     @apply transform scale-[0.64] transition-all duration-400 ease-[ease] motion-reduce:transition-none;
+  } */
+
+  .toggle-thumb.bounce {
+    @apply animate-thumbBounce motion-reduce:animate-none;
   }
 
 
