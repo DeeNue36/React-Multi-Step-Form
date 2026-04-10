@@ -232,7 +232,7 @@
   }
 
   .plan-card:has(.yearly-discount-duration:not(.hidden)) {
-    @apply h-28 transition-[height] duration-250 ease-[ease-out] motion-reduce:transition-none;
+    @apply max-md:h-28 max-md:transition-[height] max-md:duration-250 max-md:ease-[ease-out] max-md:motion-reduce:transition-none;
   }
 
   .plan-card-header {
@@ -244,7 +244,7 @@
   }
 
   .yearly-discount-duration {
-    @apply text-small-size  mbs-1;
+    @apply text-small-size text-primary-dark-blue mbs-1;
   }
 
   /** Plan Section: Billing Toggle */
@@ -283,7 +283,7 @@
     @apply absolute top-0.75 left-1 w-4 h-4 bg-neutral-white rounded-[50%] pointer-events-none transition-[left] duration-300 ease-[ease] motion-reduce:transition-none;
   }
 
-  .toggle-container.active .toggle-thumb {
+  .billing-container.active .toggle-thumb {
     @apply left-6.25;
   }
 
