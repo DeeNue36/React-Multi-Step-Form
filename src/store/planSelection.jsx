@@ -3,6 +3,7 @@ import { create } from 'zustand';
 export const usePlanSelection = create((set) => ({
     selectedPlan: null, // state to hold the selected plan, initially null i.e. 'arcade' | 'advanced' | 'pro'
     planError: '',
+    isYearly: false,
 
     selectPlan: (planName) => {
         set({
@@ -20,6 +21,12 @@ export const usePlanSelection = create((set) => ({
     clearPlanSelection: () => {
         set({
             selectedPlan: null
+        })
+    },
+
+    setIsYearly: (yearly) => {
+        set({
+            isYearly: yearly
         })
     }
 
