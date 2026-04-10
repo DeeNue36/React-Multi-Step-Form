@@ -12,15 +12,40 @@ export const SelectPlan = () => {
         selectedPlan, 
         selectPlan, 
         planError, 
-        setPlanError
+        setPlanError,
+        isYearly,
+        setIsYearly
     } = usePlanSelection();
 
     //* Plans Array
     const plans =[
-        {id: 'arcade', name: 'Arcade', price: 9, image: arcade },
-        {id: 'advanced', name: 'Advanced', price: 12, image: advanced },
-        {id: 'pro', name: 'Pro', price: 15, image: pro }
+        {id: 'arcade', name: 'Arcade', monthly: 9, yearly: 90, image: arcade },
+        {id: 'advanced', name: 'Advanced', monthly: 12, yearly: 120, image: advanced },
+        {id: 'pro', name: 'Pro', monthly: 15, yearly: 150, image: pro }
     ];
+
+    //* Handle Billing Toggling
+    const handleBillingToggle = (e) => {
+        const isYearlyBilling = e.target.value === '1';
+        setIsYearly(isYearlyBilling);
+        bounceThumb(); // Thumb Animation
+    }
+
+    const handleMonthlyToggle = () => {
+        setIsYearly(false);
+        bounceThumb(); // Thumb Animation
+    }
+
+    const handleYearlyToggle = () => {
+        setIsYearly(true);
+        bounceThumb(); // Thumb Animation
+    }
+
+    const bounceThumb = () => {
+        const thumb = document.querySelector('.toggle-thumb');
+        thumb?.classList.add('clicked');
+        setTimeout(() => thumb?.classList.remove('clicked'), 150);
+    };
 
     const handleNextStep = () => {
         if (!selectedPlan) {
@@ -43,10 +68,10 @@ export const SelectPlan = () => {
 
                 <div className="form-body">
                     {planError && <span className="plan-error">{planError}</span>}
-                    
+
                     <div className="plan-container">
                         {/* <!-- * Plan Cards --> */}
-                        {plans.map(({id, name, price, image}) => (
+                        {plans.map(({id, name, monthly, yearly, image}) => (
                             <div
                                 key={id}
                                 className={`plan-card ${selectedPlan === id ? 'active' : ''}`}
@@ -61,30 +86,59 @@ export const SelectPlan = () => {
                                         {name}
                                     </h3>
                                     <div className="monthly-yearly-pricing">
-                                        <span className="price">${price}</span>
-                                        <span className="pricing-cycle">/mo</span>
+                                        <span className="price">${isYearly ? yearly : monthly}</span>
+                                        <span className="pricing-cycle">/{isYearly ? 'yr' : 'mo'}</span>
                                     </div>
-                                    <p className="yearly-discount-duration hidden"></p>
+                                    {isYearly && 
+                                        <p className="yearly-discount-duration">
+                                            2 months free
+                                        </p>
+                                    }
                                 </div>
                             </div>
                         ))}
                     </div>
 
                     {/* <!-- * Billing Options: Monthly and Yearly --> */}
-                    <div className="billing-container">
+                    <div className={`billing-container ${isYearly ? 'active' : ''}`}>
                         <div className="billing-option-container">
-                            <input type="radio" id="monthly" name="billing" value="monthly" defaultChecked="true"/>
+                            <input 
+                                type="radio" 
+                                id="monthly" 
+                                name="billing" 
+                                value="monthly" 
+                                // defaultChecked="true"
+                                checked={!isYearly} // true, by default isYearly is false
+                                onChange={handleMonthlyToggle}
+                            />
                             <label htmlFor="monthly">Monthly</label>
                         </div>
 
                         <div className="toggle-container">
                             <label htmlFor="billing-toggle">Toggle</label>
-                            <input type="range" id="billing-toggle" name="billing toggle" min="0" max="1" step="1" defaultValue="0"/>
+                            <input 
+                                type="range" 
+                                id="billing-toggle" 
+                                name="billing toggle" 
+                                min="0" 
+                                max="1" 
+                                step="1" 
+                                // defaultValue="0"
+                                value={isYearly ? '1' : '0'}
+                                onChange={handleBillingToggle}
+                            />
                             <div className="toggle-thumb"></div>
                         </div>
 
                         <div className="billing-option-container">
-                            <input type="radio" id="yearly" name="billing" value="yearly"/>
+                            <input 
+                                type="radio" 
+                                id="yearly" 
+                                name="billing" 
+                                value="yearly"
+                                checked={isYearly} // false, by default isYearly is false
+                                onChange={handleYearlyToggle}
+                            />
                             <label htmlFor="yearly">Yearly</label>
                         </div>
                     </div>
