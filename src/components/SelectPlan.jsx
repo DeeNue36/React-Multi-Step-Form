@@ -10,11 +10,14 @@ export const SelectPlan = () => {
     const prevStep = useStepProgress((state) => state.prevStep);
     const {
         selectedPlan, 
-        selectPlan, 
+        setSelectPlan, 
         planError, 
         setPlanError,
+        clearPlanSelection,
         isYearly,
-        setIsYearly
+        selectMonthly,
+        selectYearly,
+        toggleThumbClicked
     } = usePlanSelection();
 
     //* Plans Array
@@ -23,29 +26,6 @@ export const SelectPlan = () => {
         {id: 'advanced', name: 'Advanced', monthly: 12, yearly: 120, image: advanced },
         {id: 'pro', name: 'Pro', monthly: 15, yearly: 150, image: pro }
     ];
-
-    //* Handle Billing Toggling
-    const handleBillingToggle = (e) => {
-        const isYearlyBilling = e.target.value === '1';
-        setIsYearly(isYearlyBilling);
-        bounceThumb(); // Thumb Animation
-    }
-
-    const handleMonthlyToggle = () => {
-        setIsYearly(false);
-        bounceThumb(); // Thumb Animation
-    }
-
-    const handleYearlyToggle = () => {
-        setIsYearly(true);
-        bounceThumb(); // Thumb Animation
-    }
-
-    const bounceThumb = () => {
-        const thumb = document.querySelector('.toggle-thumb');
-        thumb?.classList.add('clicked');
-        setTimeout(() => thumb?.classList.remove('clicked'), 150);
-    };
 
     const handleNextStep = () => {
         if (!selectedPlan) {
@@ -67,7 +47,20 @@ export const SelectPlan = () => {
                 </div>
 
                 <div className="form-body">
-                    {planError && <span className="plan-error">{planError}</span>}
+                    { planError || selectedPlan ? 
+                        (
+                            <div className="flex justify-between items-center h-8 mbe-[0.4rem]">
+                                <span className="plan-error">{planError}</span>
+                                <button 
+                                    type="button" 
+                                    onClick={clearPlanSelection}
+                                    className='text-neutral-dark-grey hover:text-primary-bright-red'
+                                >
+                                    Clear
+                                </button>
+                            </div>
+                        ) : null
+                    }
 
                     <div className="plan-container">
                         {/* <!-- * Plan Cards --> */}
@@ -75,7 +68,7 @@ export const SelectPlan = () => {
                             <div
                                 key={id}
                                 className={`plan-card ${selectedPlan === id ? 'active' : ''}`}
-                                onClick={() => selectPlan(id)} 
+                                onClick={() => setSelectPlan(id)} 
                             >
                                 <div className="plan-card-image">
                                     <img src={image} alt={`${name} Plan Image`} />
@@ -107,9 +100,8 @@ export const SelectPlan = () => {
                                 id="monthly" 
                                 name="billing" 
                                 value="monthly" 
-                                // defaultChecked="true"
                                 checked={!isYearly} // true, by default isYearly is false
-                                onChange={handleMonthlyToggle}
+                                onChange={selectMonthly}
                             />
                             <label htmlFor="monthly">Monthly</label>
                         </div>
@@ -120,14 +112,15 @@ export const SelectPlan = () => {
                                 type="range" 
                                 id="billing-toggle" 
                                 name="billing toggle" 
-                                min="0" 
-                                max="1" 
-                                step="1" 
-                                // defaultValue="0"
+                                min="0" max="1" step="1" 
                                 value={isYearly ? '1' : '0'}
-                                onChange={handleBillingToggle}
+                                // onInput={handleBillingToggle}
+                                onInput={(e) => {
+                                    const value = e.target.value;
+                                    value === '1' ? selectYearly() : selectMonthly();
+                                }}
                             />
-                            <div className="toggle-thumb"></div>
+                            <div className={`toggle-thumb ${toggleThumbClicked ? 'bounce' : ''}`}></div>
                         </div>
 
                         <div className="billing-option-container">
@@ -137,7 +130,7 @@ export const SelectPlan = () => {
                                 name="billing" 
                                 value="yearly"
                                 checked={isYearly} // false, by default isYearly is false
-                                onChange={handleYearlyToggle}
+                                onChange={selectYearly}
                             />
                             <label htmlFor="yearly">Yearly</label>
                         </div>
@@ -157,66 +150,3 @@ export const SelectPlan = () => {
         </section>
     )
 }
-
-                        {/* <!-- * Plan Card 1: Arcade Plan --> */}
-                        {/* <div className={`plan-card ${selectedPlan === 'arcade' ? 'active' : ''}`} onClick={() => selectPlan('arcade')}>
-                            <div className="plan-card-image">
-                                <img src={arcade} alt="Arcade Plan Image"/>
-                            </div>
-                            <div className="plan-card-body">
-                                <h3 className="plan-card-header">
-                                    Arcade
-                                </h3>
-                                <div className="monthly-yearly-pricing">
-                                    <span className="price">
-                                        $9
-                                    </span>
-                                    <span className="pricing-cycle">
-                                        /mo
-                                    </span>
-                                </div>
-                                <p className="yearly-discount-duration hidden"></p>
-                            </div>
-                        </div> */}
-
-                        {/* <!-- * Plan Card 2: Advanced Plan --> */}
-                        {/* <div className={`plan-card ${selectedPlan === 'advanced' ? 'active' : ''}`} onClick={() => selectPlan('advanced')}>
-                            <div className="plan-card-image">
-                                <img src={advanced} alt="Advanced Plan Image"/>
-                            </div>
-                            <div className="plan-card-body">
-                                <h3 className="plan-card-header">
-                                    Advanced
-                                </h3>
-                                <div className="monthly-yearly-pricing">
-                                    <span className="price">
-                                        $12
-                                    </span>
-                                    <span className="pricing-cycle">
-                                        /mo
-                                    </span>
-                                </div>
-                                <p className="yearly-discount-duration hidden"></p>
-                            </div>
-                        </div> */}
-
-                        {/* <!-- * Plan Card 3: Pro Plan --> */}
-                        {/* <div className={`plan-card ${selectedPlan === 'pro' ? 'active' : ''}`} onClick={() => selectPlan('pro')}>
-                            <div className="plan-card-image">
-                                <img src={pro} alt="Pro Plan Image"/>
-                            </div>
-                            <div className="plan-card-body">
-                                <h3 className="plan-card-header">
-                                    Pro
-                                </h3>
-                                <div className="monthly-yearly-pricing">
-                                    <span className="price">
-                                        $15
-                                    </span>
-                                    <span className="pricing-cycle">
-                                        /mo
-                                    </span>
-                                </div>
-                                <p className="yearly-discount-duration hidden"></p>
-                            </div>
-                        </div> */}
