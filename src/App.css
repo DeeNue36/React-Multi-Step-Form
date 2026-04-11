@@ -219,7 +219,7 @@
 
   /** Section 2: Plan Selection  */
   .plan-error {
-    @apply text-primary-bright-red font-medium text-regular-size mbe-[0.8rem];
+    @apply text-primary-bright-red font-medium text-regular-size;
   }
 
   .form-body:has(.plan-error:not(.hidden)) {
