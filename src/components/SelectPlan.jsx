@@ -65,30 +65,31 @@ export const SelectPlan = () => {
                     <div className="plan-container">
                         {/* <!-- * Plan Cards --> */}
                         {plans.map(({id, name, monthly, yearly, image}) => (
-                            <div
+                            <button
+                                type="button"
                                 key={id}
                                 className={`plan-card ${selectedPlan === id ? 'active' : ''}`}
                                 onClick={() => setSelectPlan(id)} 
                             >
-                                <div className="plan-card-image">
+                                <span className="plan-card-image">
                                     <img src={image} alt={`${name} Plan Image`} />
-                                </div>
+                                </span>
 
-                                <div className="plan-card-body">
+                                <span className="plan-card-body">
                                     <h3 className="plan-card-header">
                                         {name}
                                     </h3>
-                                    <div className="monthly-yearly-pricing">
+                                    <span className="monthly-yearly-pricing">
                                         <span className="price">${isYearly ? yearly : monthly}</span>
                                         <span className="pricing-cycle">/{isYearly ? 'yr' : 'mo'}</span>
-                                    </div>
+                                    </span>
                                     {isYearly && 
                                         <p className="yearly-discount-duration">
                                             2 months free
                                         </p>
                                     }
-                                </div>
-                            </div>
+                                </span>
+                            </button>
                         ))}
                     </div>
 
