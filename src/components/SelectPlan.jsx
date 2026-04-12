@@ -21,7 +21,7 @@ export const SelectPlan = () => {
     } = usePlanSelection();
 
     //* Plans Array
-    const plans =[
+    const plans = [
         {id: 'arcade', name: 'Arcade', monthly: 9, yearly: 90, image: arcade },
         {id: 'advanced', name: 'Advanced', monthly: 12, yearly: 120, image: advanced },
         {id: 'pro', name: 'Pro', monthly: 15, yearly: 150, image: pro }
