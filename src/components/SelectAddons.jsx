@@ -1,8 +1,20 @@
 import { useStepProgress } from "../store/stepProgress"
+import { usePlanSelection } from "../store/planSelection"
+import { useAddonsSelection } from "../store/addonsSelection"
 
 export const SelectAddons = () => {
     const nextStep = useStepProgress((state) => state.nextStep);
     const prevStep = useStepProgress((state) => state.prevStep);
+    const isYearly = usePlanSelection((state) => state.isYearly);
+    const { selectedAddons, setAddons } = useAddonsSelection();
+
+    // Todo: import and use the isYearly state from the usePlanSelection hook to determine the pricing of the addons
+    // * Addons array
+    const addons = [
+        {id:'online-service', name:'Online Service', monthly: 1, yearly: 10, description: 'Access to multiplayer games'},
+        {id:'larger-storage', name:'Larger Storage', monthly: 2, yearly: 20, description: 'Extra 1TB of cloud save'},
+        {id:'customizable-profile', name:'Customizable Profile', monthly: 2, yearly: 20, description: 'Custom theme on your profile'},
+    ]
 
     {/* <!-- * Step 3: Add-ons Section --> */}
     return (
@@ -16,8 +28,37 @@ export const SelectAddons = () => {
 
                 <div className="add-ons-container">
 
+                    {addons.map(({id, name, monthly, yearly, description}) => (
+                        <div 
+                            className={`addon-card ${selectedAddons.includes(id) ? 'active' : ''}`} 
+                            key={id} 
+                            onClick={() => setAddons(id)}
+                        >
+                            <div className="addon-card-body">
+                                <input type="checkbox" id={id} name={`${id}-addon`} value={id}/>
+                                <span className="custom-checkbox"></span>
+                                <div className="addon-details">
+                                    <label htmlFor={id} className="addon-card-header">
+                                        {name}
+                                    </label>
+                                    <p className="addon-card-description">
+                                        {description}
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="monthly-yearly-pricing">
+                                <span className="addon-price">
+                                    +${isYearly ? yearly : monthly}
+                                </span>
+                                <span className="addon-pricing-cycle">
+                                    {isYearly ? '/yr' : '/mo'}
+                                </span>
+                            </div>
+                        </div>
+                    ))}
+
                     {/* <!-- * Addon Option Card 1: Online Service --> */}
-                    <div className="addon-card">
+                    {/* <div className="addon-card">
                         <div className="addon-card-body">
                             <input type="checkbox" id="online-service" name="online-service-addon" value="online-service"/>
                             <span className="custom-checkbox"></span>
@@ -38,10 +79,10 @@ export const SelectAddons = () => {
                                 /mo
                             </span>
                         </div>
-                    </div>
+                    </div> */}
 
                     {/* <!-- * Addon Option Card 2: Larger Storage --> */}
-                    <div className="addon-card">
+                    {/* <div className="addon-card">
                         <div className="addon-card-body">
                             <input type="checkbox" id="larger-storage" name="larger-storage-addon" value="larger-storage"/>
                             <span className="custom-checkbox"></span>
@@ -62,10 +103,10 @@ export const SelectAddons = () => {
                                 /mo
                             </span>
                         </div>
-                    </div>
+                    </div> */}
 
                     {/* <!-- * Addon Option Card 3: Customizable Profile --> */}
-                    <div className="addon-card">
+                    {/* <div className="addon-card">
                         <div className="addon-card-body">
                             <input type="checkbox" id="customizable-profile" name="customizable-profile-addon" value="customizable-profile"/>
                             <span className="custom-checkbox"></span>
@@ -86,7 +127,7 @@ export const SelectAddons = () => {
                                 /mo
                             </span>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
 
             </section>
