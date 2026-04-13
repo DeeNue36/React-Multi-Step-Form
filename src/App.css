@@ -219,7 +219,7 @@
 
   /** Section 2: Plan Selection  */
   .plan-error {
-    @apply text-primary-bright-red font-medium text-regular-size;
+    @apply text-primary-bright-red font-medium max-md:text-small-size text-regular-size;
   }
 
   .form-body:has(.plan-error:not(.hidden)) {
@@ -345,7 +345,7 @@
     @apply flex flex-col cursor-pointer;
 
     & label {
-      @apply text-regular-size font-medium text-primary-dark-blue mbe-px;
+      @apply w-fit text-regular-size font-medium text-primary-dark-blue mbe-px;
     }
 
     & p {
