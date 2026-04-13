@@ -1,5 +1,11 @@
 import { create } from 'zustand';
 
+const plans = [
+    {id: 'arcade', name: 'Arcade', monthly: 9, yearly: 90 },
+    {id: 'advanced', name: 'Advanced', monthly: 12, yearly: 120 },
+    {id: 'pro', name: 'Pro', monthly: 15, yearly: 150 }
+];
+
 export const usePlanSelection = create((set, get) => ({
     selectedPlan: null, // state to hold the selected plan, initially null i.e. 'arcade' | 'advanced' | 'pro'
     planError: '',
@@ -55,6 +61,22 @@ export const usePlanSelection = create((set, get) => ({
         set({ isYearly: true});
         get().bounceToggleThumb();
     },
+
+    getSelectedPlanPrice: () => {
+        const { selectedPlan, isYearly } = get();
+
+        if (!selectedPlan) return 0;
+
+        // Use the plans array to find the selected plan based on its id
+        const plan = plans.find(plan => plan.id === selectedPlan);
+        return plan ? (isYearly ? plan.yearly : plan.monthly) : 0;
+    },
+
+    getSelectedPlanName: () => {
+        const { selectedPlan } = get();
+        const plan = plans.find(plan => plan.id === selectedPlan);
+        return plan ? plan.name : selectedPlan || '';
+    }
 
 
 }));
