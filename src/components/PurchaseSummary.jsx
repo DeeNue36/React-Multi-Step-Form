@@ -1,8 +1,13 @@
-import { useStepProgress } from "../store/stepProgress"
+import { useStepProgress } from "../store/stepProgress";
+import { usePlanSelection } from "../store/planSelection";
+import { useAddonsSelection } from "../store/addonsSelection";
 
 export const PurchaseSummary = () => {
     const nextStep = useStepProgress((state) => state.nextStep);
     const prevStep = useStepProgress((state) => state.prevStep);
+
+    const { selectedPlan, isYearly } = usePlanSelection();
+    const selectedAddons = useAddonsSelection((state) => state.selectedAddons);
 
     {/* <!-- * Step 4: Summary Section--> */}
     return (
@@ -18,7 +23,9 @@ export const PurchaseSummary = () => {
                     <div className="summary-card">
                         <div className="selected-plan-and-price">
                             <div className="selected-plan">
-                                <p className="user-plan-selected"></p>
+                                <p className="user-plan-selected">
+                                    {selectedPlan} {isYearly? '(Yearly)' : '(Monthly)'}
+                                </p>
                                 <button type="button" className="change-plan-btn">
                                     Change
                                 </button>
@@ -27,8 +34,17 @@ export const PurchaseSummary = () => {
                                 <span></span>
                             </div>
                         </div>
+
                         <div className="divider"></div>
-                        <div className="selected-addon-and-price-container"></div>
+
+                        <div className="selected-addon-and-price-container">
+                            {selectedAddons.map((addon) => (
+                                <div className="selected-addon-and-price" key={addon}>
+                                    <span className="selected-addon">{addon}</span>
+                                    <span className="selected-addon-price">$</span>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                     <div className="total-cost-container">
                         <span className="total-cost"></span>
