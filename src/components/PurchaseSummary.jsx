@@ -6,8 +6,14 @@ export const PurchaseSummary = () => {
     const nextStep = useStepProgress((state) => state.nextStep);
     const prevStep = useStepProgress((state) => state.prevStep);
 
-    const { selectedPlan, isYearly } = usePlanSelection();
-    const selectedAddons = useAddonsSelection((state) => state.selectedAddons);
+    const { isYearly, getSelectedPlanPrice, getSelectedPlanName } = usePlanSelection();
+    const { selectedAddons, getTotalAddonsPrice, getAddonData } = useAddonsSelection();
+
+    const planPrice = getSelectedPlanPrice();
+    const planName = getSelectedPlanName();
+    const addonsTotalPrice = getTotalAddonsPrice(isYearly);
+    const total = planPrice + addonsTotalPrice;
+    const billingCycle = isYearly ? 'yr' : 'mo';
 
     {/* <!-- * Step 4: Summary Section--> */}
     return (
@@ -24,31 +30,45 @@ export const PurchaseSummary = () => {
                         <div className="selected-plan-and-price">
                             <div className="selected-plan">
                                 <p className="user-plan-selected">
-                                    {selectedPlan} {isYearly? '(Yearly)' : '(Monthly)'}
+                                    {planName} {isYearly? '(Yearly)' : '(Monthly)'}
                                 </p>
                                 <button type="button" className="change-plan-btn">
                                     Change
                                 </button>
                             </div>
                             <div className="selected-plan-price">
-                                <span></span>
+                                <span>${planPrice}/{billingCycle}</span>
                             </div>
                         </div>
 
                         <div className="divider"></div>
 
                         <div className="selected-addon-and-price-container">
-                            {selectedAddons.map((addon) => (
-                                <div className="selected-addon-and-price" key={addon}>
-                                    <span className="selected-addon">{addon}</span>
-                                    <span className="selected-addon-price">$</span>
-                                </div>
-                            ))}
+                            {selectedAddons.map((addon) => {
+                                const addonData = getAddonData(addon);
+                                if (!addonData) return null;
+                                const price = isYearly ? addonData.yearly : addonData.monthly;
+
+                                return (
+                                    <div className="selected-addon-and-price" key={addon}>
+                                        <span className="selected-addon">
+                                            {addonData.name}
+                                        </span>
+                                        <span className="selected-addon-price">
+                                            +${price}/{billingCycle}
+                                        </span>
+                                    </div>
+                                );
+                            })}
                         </div>
                     </div>
                     <div className="total-cost-container">
-                        <span className="total-cost"></span>
-                        <span className="total-cost-value"></span>
+                        <span className="total-cost">
+                            Total (per {billingCycle === 'yr' ? 'year' : 'month'})
+                        </span>
+                        <span className="total-cost-value">
+                            +${total}/{billingCycle}
+                        </span>
                     </div>
                 </div>
 
