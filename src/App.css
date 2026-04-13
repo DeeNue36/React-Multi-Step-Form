@@ -383,7 +383,7 @@
     @apply self-center;
 
     & span {
-      @apply text-regular-size font-medium text-primary-dark-blue;
+      @apply text-regular-size font-bold text-primary-dark-blue;
     }
   }
 
@@ -408,7 +408,7 @@
   }
 
   .total-cost {
-    @apply text-small-size text-neutral-dark-grey;
+    @apply max-md:text-small-size text-regular-size text-neutral-dark-grey;
   }
 
   .total-cost-value {
