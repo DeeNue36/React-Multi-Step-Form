@@ -1,6 +1,13 @@
 import { create } from 'zustand';
 
-export const useAddonsSelection = create((set) => ({
+export const addons = [
+    {id:'online-service', name:'Online Service', monthly: 1, yearly: 10, description: 'Access to multiplayer games'},
+    {id:'larger-storage', name:'Larger Storage', monthly: 2, yearly: 20, description: 'Extra 1TB of cloud save'},
+    {id:'customizable-profile', name:'Customizable Profile', monthly: 2, yearly: 20, description: 'Custom theme on your profile'},
+];
+
+
+export const useAddonsSelection = create((set, get) => ({
     selectedAddons: [],
 
     setAddons: (addonId) => {
@@ -24,4 +31,24 @@ export const useAddonsSelection = create((set) => ({
             };
         });
     },
+
+    // Get single addon price
+    getAddonPrice: (addonId) => {
+        const isYearly = get().isYearly;
+        const addon = addons.find(addon => addon.id === addonId);
+        return addon ? (isYearly ? addon.yearly : addon.monthly) : 0;
+    },
+
+    // Calculate total addons price
+    getTotalAddonsPrice: (isYearly) => {
+        const { selectedAddons } = get();
+        return selectedAddons.reduce((total, addonId) => {
+            const addon = addons.find(addon => addon.id === addonId);
+            const price = addon ? (isYearly ? addon.yearly : addon.monthly) : 0;
+            return total + price;
+        }, 0);
+    },
+
+    getAddonData: (addonId) => addons.find(addon => addon.id === addonId),
+
 }))
