@@ -35,7 +35,13 @@ export const SelectAddons = () => {
                             onClick={() => setAddons(id)}
                         >
                             <div className="addon-card-body">
-                                <input type="checkbox" id={id} name={`${id}-addon`} value={id}/>
+                                <input 
+                                    type="checkbox" 
+                                    id={id} 
+                                    name={`${id}-addon`} 
+                                    value={id}
+                                    checked={selectedAddons.includes(id)}  
+                                />
                                 <span className="custom-checkbox"></span>
                                 <div className="addon-details">
                                     <label htmlFor={id} className="addon-card-header">
