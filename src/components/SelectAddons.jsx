@@ -1,5 +1,6 @@
 import { useStepProgress } from "../store/stepProgress"
 import { usePlanSelection } from "../store/planSelection"
+import { addons } from "../store/addonsSelection"
 import { useAddonsSelection } from "../store/addonsSelection"
 
 export const SelectAddons = () => {
@@ -7,14 +8,6 @@ export const SelectAddons = () => {
     const prevStep = useStepProgress((state) => state.prevStep);
     const isYearly = usePlanSelection((state) => state.isYearly);
     const { selectedAddons, setAddons } = useAddonsSelection();
-
-    // Todo: import and use the isYearly state from the usePlanSelection hook to determine the pricing of the addons
-    // * Addons array
-    const addons = [
-        {id:'online-service', name:'Online Service', monthly: 1, yearly: 10, description: 'Access to multiplayer games'},
-        {id:'larger-storage', name:'Larger Storage', monthly: 2, yearly: 20, description: 'Extra 1TB of cloud save'},
-        {id:'customizable-profile', name:'Customizable Profile', monthly: 2, yearly: 20, description: 'Custom theme on your profile'},
-    ]
 
     {/* <!-- * Step 3: Add-ons Section --> */}
     return (
