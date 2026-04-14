@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-const plans = [
+export const plans = [
     {id: 'arcade', name: 'Arcade', monthly: 9, yearly: 90 },
     {id: 'advanced', name: 'Advanced', monthly: 12, yearly: 120 },
     {id: 'pro', name: 'Pro', monthly: 15, yearly: 150 }
@@ -62,18 +62,24 @@ export const usePlanSelection = create((set, get) => ({
         get().bounceToggleThumb();
     },
 
+
+    //* Functions to get the selected plan price and name to display in the purchaseSummary component
+
+    //? Get selected plan price
     getSelectedPlanPrice: () => {
         const { selectedPlan, isYearly } = get();
 
         if (!selectedPlan) return 0;
 
-        // Use the plans array to find the selected plan based on its id
+        // Use the plans array to find the selected plan based on its id and return either the monthly or yearly price
         const plan = plans.find(plan => plan.id === selectedPlan);
         return plan ? (isYearly ? plan.yearly : plan.monthly) : 0;
     },
 
+    //? Get selected plan name
     getSelectedPlanName: () => {
         const { selectedPlan } = get();
+        // Use the plans array to find the selected plan based on its id and return its name or use the state selectedPlan as a fallback
         const plan = plans.find(plan => plan.id === selectedPlan);
         return plan ? plan.name : selectedPlan || '';
     }
