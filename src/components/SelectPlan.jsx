@@ -1,6 +1,7 @@
 import arcade from '/Images/icon-arcade.svg'
 import advanced from '/Images/icon-advanced.svg'
 import pro from '/Images/icon-pro.svg'
+import { plans } from '../store/planSelection'
 import { useStepProgress } from '../store/stepProgress'
 import { usePlanSelection } from '../store/planSelection'
 
@@ -21,11 +22,10 @@ export const SelectPlan = () => {
     } = usePlanSelection();
 
     //* Plans Array
-    const plans = [
-        {id: 'arcade', name: 'Arcade', monthly: 9, yearly: 90, image: arcade },
-        {id: 'advanced', name: 'Advanced', monthly: 12, yearly: 120, image: advanced },
-        {id: 'pro', name: 'Pro', monthly: 15, yearly: 150, image: pro }
-    ];
+    const plansData = plans.map(plan => ({
+        ...plan,
+        image: plan.id === 'arcade' ? arcade : plan.id === 'advanced' ? advanced : pro
+    }));
 
     const handleNextStep = () => {
         if (!selectedPlan) {
@@ -64,7 +64,7 @@ export const SelectPlan = () => {
 
                     <div className="plan-container">
                         {/* <!-- * Plan Cards --> */}
-                        {plans.map(({id, name, monthly, yearly, image}) => (
+                        {plansData.map(({id, name, monthly, yearly, image}) => (
                             <button
                                 type="button"
                                 key={id}
@@ -116,10 +116,9 @@ export const SelectPlan = () => {
                                 min="0" max="1" step="1" 
                                 value={isYearly ? '1' : '0'}
                                 // onInput={handleBillingToggle}
-                                onInput={(e) => {
-                                    const value = e.target.value;
-                                    value === '1' ? selectYearly() : selectMonthly();
-                                }}
+                                onInput={(e) => (
+                                    e.target.value === '1' ? selectYearly() : selectMonthly()
+                                )}
                             />
                             <div className={`toggle-thumb ${toggleThumbClicked ? 'bounce' : ''}`}></div>
                         </div>
