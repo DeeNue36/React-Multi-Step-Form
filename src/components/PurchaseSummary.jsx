@@ -44,13 +44,13 @@ export const PurchaseSummary = () => {
                         <div className="divider"></div>
 
                         <div className="selected-addon-and-price-container">
-                            {selectedAddons.map((addon) => {
-                                const addonData = getAddonData(addon);
+                            {selectedAddons.map((addonId) => {
+                                const addonData = getAddonData(addonId);
                                 if (!addonData) return null;
                                 const price = isYearly ? addonData.yearly : addonData.monthly;
 
                                 return (
-                                    <div className="selected-addon-and-price" key={addon}>
+                                    <div className="selected-addon-and-price" key={addonId}>
                                         <span className="selected-addon">
                                             {addonData.name}
                                         </span>
