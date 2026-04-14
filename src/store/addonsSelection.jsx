@@ -11,33 +11,32 @@ export const useAddonsSelection = create((set, get) => ({
     selectedAddons: [],
 
     setAddons: (addonId) => {
-        set((state) => {
-            const addonsCurrentlySelected = state.selectedAddons;
-            const isSelected = addonsCurrentlySelected.includes(addonId);
+        set((state) => ({
+            selectedAddons: state.selectedAddons.includes(addonId) ? state.selectedAddons.filter((id) => id !== addonId) : [...state.selectedAddons, addonId]
+        }))
+        // set((state) => {
+        //     const addonsCurrentlySelected = state.selectedAddons;
+        //     const isSelected = addonsCurrentlySelected.includes(addonId);
 
-            let newAddons; // store the list of selected addons
+        //     let newAddons; // store the list of selected addons
 
-            if(isSelected) {
-                // if the addon has been selected remove it from the list
-                newAddons = addonsCurrentlySelected.filter((id) => id !== addonId);
-            }
-            else {
-                // else add the addon to the list
-                newAddons = [...addonsCurrentlySelected, addonId]
-            }
+        //     if(isSelected) {
+        //         // if the addon has been selected remove it from the list
+        //         newAddons = addonsCurrentlySelected.filter((id) => id !== addonId);
+        //     }
+        //     else {
+        //         // else add the addon to the list
+        //         newAddons = [...addonsCurrentlySelected, addonId]
+        //     }
 
-            return {
-                selectedAddons: newAddons
-            };
-        });
+        //     return {
+        //         selectedAddons: newAddons
+        //     };
+        // });
     },
 
-    // Get single addon price
-    getAddonPrice: (addonId) => {
-        const isYearly = get().isYearly;
-        const addon = addons.find(addon => addon.id === addonId);
-        return addon ? (isYearly ? addon.yearly : addon.monthly) : 0;
-    },
+    // Get addon data
+    getAddonData: (addonId) => addons.find(addon => addon.id === addonId),
 
     // Calculate total addons price
     getTotalAddonsPrice: (isYearly) => {
@@ -48,7 +47,5 @@ export const useAddonsSelection = create((set, get) => ({
             return total + price;
         }, 0);
     },
-
-    getAddonData: (addonId) => addons.find(addon => addon.id === addonId),
 
 }))
