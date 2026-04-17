@@ -33,7 +33,8 @@ export const SelectAddons = () => {
                                     id={id} 
                                     name={`${id}-addon`} 
                                     value={id}
-                                    checked={selectedAddons.includes(id)}  
+                                    checked={selectedAddons.includes(id)}
+                                    onChange={(e) => e.stopPropagation()}  //? // prevent click from bubbling up to the parent div's onClick
                                 />
                                 <span className="custom-checkbox"></span>
                                 <div className="addon-details">
@@ -55,78 +56,6 @@ export const SelectAddons = () => {
                             </div>
                         </div>
                     ))}
-
-                    {/* <!-- * Addon Option Card 1: Online Service --> */}
-                    {/* <div className="addon-card">
-                        <div className="addon-card-body">
-                            <input type="checkbox" id="online-service" name="online-service-addon" value="online-service"/>
-                            <span className="custom-checkbox"></span>
-                            <div className="addon-details">
-                                <label for="online-service" className="addon-card-header">
-                                    Online service
-                                </label>
-                                <p className="addon-card-description">
-                                    Access to multiplayer games
-                                </p>
-                            </div>
-                        </div>
-                        <div className="monthly-yearly-pricing">
-                            <span className="addon-price">
-                                +$1
-                            </span>
-                            <span className="addon-pricing-cycle">
-                                /mo
-                            </span>
-                        </div>
-                    </div> */}
-
-                    {/* <!-- * Addon Option Card 2: Larger Storage --> */}
-                    {/* <div className="addon-card">
-                        <div className="addon-card-body">
-                            <input type="checkbox" id="larger-storage" name="larger-storage-addon" value="larger-storage"/>
-                            <span className="custom-checkbox"></span>
-                            <div className="addon-details">
-                                <label for="larger-storage" className="addon-card-header">
-                                    Larger Storage
-                                </label>
-                                <p className="addon-card-description">
-                                    Extra 1TB of cloud save
-                                </p>
-                            </div>
-                        </div>
-                        <div className="monthly-yearly-pricing">
-                            <span className="addon-price">
-                                +$2
-                            </span>
-                            <span className="addon-pricing-cycle">
-                                /mo
-                            </span>
-                        </div>
-                    </div> */}
-
-                    {/* <!-- * Addon Option Card 3: Customizable Profile --> */}
-                    {/* <div className="addon-card">
-                        <div className="addon-card-body">
-                            <input type="checkbox" id="customizable-profile" name="customizable-profile-addon" value="customizable-profile"/>
-                            <span className="custom-checkbox"></span>
-                            <div className="addon-details">
-                                <label for="customizable-profile" className="addon-card-header">
-                                    Customizable Profile
-                                </label>
-                                <p className="addon-card-description">
-                                    Custom theme on your profile
-                                </p>
-                            </div>
-                        </div>
-                        <div className="monthly-yearly-pricing">
-                            <span className="addon-price">
-                                +$2
-                            </span>
-                            <span className="addon-pricing-cycle">
-                                /mo
-                            </span>
-                        </div>
-                    </div> */}
                 </div>
 
             </section>
