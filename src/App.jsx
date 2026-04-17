@@ -1,5 +1,5 @@
 import './App.css'
-import { useStepProgress } from './store/stepProgress'
+import { useStepProgression } from './store/stepProgression'
 import { ProgressSidebar } from './components/ProgressSidebar'
 import { PersonalInfo } from './components/PersonalInfo'
 import { SelectPlan } from './components/SelectPlan'
@@ -8,7 +8,7 @@ import { PurchaseSummary } from './components/PurchaseSummary'
 import { ThankYou } from './components/ThankYou'
 
 function App() {
-  const {currentStep} = useStepProgress();
+  const { currentStep } = useStepProgression();
 
   const renderCurrentStep = () => {
     const steps = {
