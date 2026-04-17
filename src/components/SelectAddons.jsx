@@ -1,7 +1,6 @@
 import { useStepProgression } from "../store/stepProgression"
 import { usePlanSelection } from "../store/planSelection"
-import { addons } from "../store/addonsSelection"
-import { useAddonsSelection } from "../store/addonsSelection"
+import { addons, useAddonsSelection } from "../store/addonsSelection"
 
 export const SelectAddons = () => {
     const nextStep = useStepProgression((state) => state.nextStep);

@@ -1,9 +1,8 @@
 import arcade from '/Images/icon-arcade.svg'
 import advanced from '/Images/icon-advanced.svg'
 import pro from '/Images/icon-pro.svg'
-import { plans } from '../store/planSelection'
 import { useStepProgression } from '../store/stepProgression'
-import { usePlanSelection } from '../store/planSelection'
+import { plans, usePlanSelection } from '../store/planSelection'
 
 export const SelectPlan = () => {
     // const {nextStep, prevStep} = useStepProgression();
