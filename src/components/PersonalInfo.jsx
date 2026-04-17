@@ -1,8 +1,8 @@
-import { useStepProgress } from "../store/stepProgress";
+import { useStepProgression } from "../store/stepProgression";
 import { useInputValidation } from '../store/inputValidation'
 
 export const PersonalInfo = () => {
-    const nextStep = useStepProgress((state) => state.nextStep);
+    const nextStep = useStepProgression((state) => state.nextStep);
     const {
         nameValue, 
         emailValue, 

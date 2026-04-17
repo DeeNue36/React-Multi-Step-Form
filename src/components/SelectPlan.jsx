@@ -2,13 +2,13 @@ import arcade from '/Images/icon-arcade.svg'
 import advanced from '/Images/icon-advanced.svg'
 import pro from '/Images/icon-pro.svg'
 import { plans } from '../store/planSelection'
-import { useStepProgress } from '../store/stepProgress'
+import { useStepProgression } from '../store/stepProgression'
 import { usePlanSelection } from '../store/planSelection'
 
 export const SelectPlan = () => {
-    // const {nextStep, prevStep} = useStepProgress();
-    const nextStep = useStepProgress((state) => state.nextStep);
-    const prevStep = useStepProgress((state) => state.prevStep);
+    // const {nextStep, prevStep} = useStepProgression();
+    const nextStep = useStepProgression((state) => state.nextStep);
+    const prevStep = useStepProgression((state) => state.prevStep);
     const {
         selectedPlan, 
         setSelectPlan, 

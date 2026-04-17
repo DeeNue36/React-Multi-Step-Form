@@ -1,11 +1,11 @@
-import { useStepProgress } from "../store/stepProgress"
+import { useStepProgression } from "../store/stepProgression"
 import { usePlanSelection } from "../store/planSelection"
 import { addons } from "../store/addonsSelection"
 import { useAddonsSelection } from "../store/addonsSelection"
 
 export const SelectAddons = () => {
-    const nextStep = useStepProgress((state) => state.nextStep);
-    const prevStep = useStepProgress((state) => state.prevStep);
+    const nextStep = useStepProgression((state) => state.nextStep);
+    const prevStep = useStepProgression((state) => state.prevStep);
     const isYearly = usePlanSelection((state) => state.isYearly);
     const { selectedAddons, setAddons } = useAddonsSelection();
 

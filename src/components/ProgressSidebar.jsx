@@ -1,7 +1,7 @@
-import { useStepProgress } from "../store/stepProgress";
+import { useStepProgression } from "../store/stepProgression";
 
 export const ProgressSidebar = () => {
-    const { currentStep, handleStepClick } = useStepProgress();
+    const { currentStep, handleStepClick } = useStepProgression();
 
     {/* <!-- * Progress Section --> */}
     return (
