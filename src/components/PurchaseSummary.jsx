@@ -3,6 +3,7 @@ import { usePlanSelection } from "../store/planSelection";
 import { useAddonsSelection } from "../store/addonsSelection";
 
 export const PurchaseSummary = () => {
+    const setCurrentStep = useStepProgression((state) => state.setCurrentStep);
     const nextStep = useStepProgression((state) => state.nextStep);
     const prevStep = useStepProgression((state) => state.prevStep);
 
@@ -32,7 +33,11 @@ export const PurchaseSummary = () => {
                                 <p className="user-plan-selected">
                                     {planName} {isYearly? '(Yearly)' : '(Monthly)'}
                                 </p>
-                                <button type="button" className="change-plan-btn">
+                                <button 
+                                    type="button"  
+                                    className="change-plan-btn" 
+                                    onClick={() => setCurrentStep(2)}
+                                >
                                     Change
                                 </button>
                             </div>
