@@ -4,8 +4,12 @@ import { usePlanSelection } from './planSelection';
 
 export const useStepProgression = create((set, get) => ({
     currentStep: 1,
+    stepVisited: new Set([1]), // Set to track visited steps
 
-    setCurrentStep: (step) => set({ currentStep: step }),
+    setCurrentStep: (step) => set({ 
+        currentStep: step,
+        stepVisited: new Set([...get().stepVisited, step]) 
+    }),
 
     nextStep: () => set((state) => ({ currentStep: Math.min(state.currentStep + 1, 5) })),
 
@@ -54,34 +58,42 @@ export const useStepProgression = create((set, get) => ({
     handleStepClick: (targetStep) => {
         const state = get();
         const current = state.currentStep;
+        const visited = state.stepVisited;
 
-        // Backward navigation -- got to previous step
+        //? Backward navigation -- got to previous step
         if (targetStep < current) {
             state.setCurrentStep(targetStep);
             return;
         }
 
-        // Check if all prior steps (1-3) valid → FREE NAVIGATION to any targetStep (1-4)
-        if (state.isPriorStepsValid()) {
-            state.setCurrentStep(targetStep);
-            return;
-        }
-
-        // Forward navigation but validate current step first before proceeding
-        if (!state.validateCurrentStep()) {
+        //? All prior steps valid? : Forward navigation but validate current step first before proceeding
+        if (!state.isPriorStepsValid()) {
             // Invalid: Stay on the current step and show errors (active state persists)
+            if (!state.validateCurrentStep()) return;
+
+            // Allow direct navigation to adjacent step (current+1) or step <= 2
+            // When trying to skip to steps 3/4: Push to next linear step if prereqs not met
+            if (targetStep === current + 1 || targetStep <= 2) {
+                state.setCurrentStep(targetStep); // Direct navigation: (1->2,2->3,3->4) OR step1/2 always
+            } 
+            else {
+                // Skip to 3/4 from non-adjacent: Linear push (step 1-> step 3/4 -> go to step 2; step 2-> step 4 -> go to step 3)
+                state.setCurrentStep(current + 1);
+            }
+        }
+
+        //? All prior steps valid: Free Navigation to any step
+        // Navigate user to step 3 first before freely allowing navigation to step 4 from any step
+        if (state.isPriorStepsValid()) {
+            if (targetStep === 4 && !visited.has(3)) {
+                // Force a visit to step 3 first
+                state.setCurrentStep(3);
+                return;
+            } 
+            state.setCurrentStep(targetStep); //free navigation to any step
             return;
         }
 
-        // Allow direct navigation to adjacent step (current+1) or step <= 2
-        // When trying to skip to steps 3/4: Push to next linear step if prereqs not met
-        if (targetStep === current + 1 || targetStep <= 2) {
-            // Direct navigation: (1->2,2->3,3->4) OR step1/2 always
-            state.setCurrentStep(targetStep);
-        } else {
-            // Skip to 3/4 from non-adjacent: Linear push (step 1-> step 3/4 -> go to step 2; step 2-> step 4 -> go to step 3)
-            state.setCurrentStep(current + 1);
-        }
     }
 
 }))
