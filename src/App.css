@@ -2,19 +2,19 @@
 
 @font-face {
   font-family: Ubuntu;
-  src: url('../public/fonts/Ubuntu-Regular.ttf');
+  src: url('/fonts/Ubuntu-Regular.ttf');
   font-weight: normal;
 }
 
 @font-face {
   font-family: Ubuntu;
-  src: url('../public/fonts/Ubuntu-Medium.ttf');
+  src: url('/fonts/Ubuntu-Medium.ttf');
   font-weight: 500;
 }
 
 @font-face {
   font-family: Ubuntu;
-  src: url('../public/fonts/Ubuntu-Bold.ttf');
+  src: url('/fonts/Ubuntu-Bold.ttf');
   font-weight: bold;
 }
 
@@ -164,7 +164,7 @@
 
   /** Section 1: Personal Info Form Section */
   .form-main-section {
-    @apply w-full h-[calc(100svh-2rem)] lmb:h-[calc(100svh-12rem)] flex flex-col justify-center md:flex-row md:w-[70vw] md:h-172 md:items-center md:px-8;
+    @apply w-full h-[calc(100svh-2rem)] lmb:h-[calc(100svh-12rem)] flex flex-col justify-center md:flex-row md:w-[70vw] md:h-172 items-center md:px-8;
   }
 
   /* .personal-info-form {
@@ -422,7 +422,7 @@
 
   /** Section 5: Thank You Section */
   .thank-you-section {
-    @apply justify-center text-center;
+    @apply justify-center items-center text-center;
 
     & img, & h2 {
       @apply mbe-8;
@@ -442,5 +442,3 @@
   }
 
 }
-
-/* TODO: For screens where the mobile form section touches the button section apply margin top on '.submit-form' and overflow-y on '.form-mobile' */
