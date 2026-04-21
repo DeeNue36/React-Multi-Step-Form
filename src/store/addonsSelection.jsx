@@ -14,33 +14,15 @@ export const useAddonsSelection = create((set, get) => ({
         set((state) => ({
             selectedAddons: state.selectedAddons.includes(addonId) ? state.selectedAddons.filter((id) => id !== addonId) : [...state.selectedAddons, addonId]
         }))
-        // set((state) => {
-        //     const addonsCurrentlySelected = state.selectedAddons;
-        //     const isSelected = addonsCurrentlySelected.includes(addonId);
-
-        //     let newAddons; // store the list of selected addons
-
-        //     if(isSelected) {
-        //         // if the addon has been selected remove it from the list
-        //         newAddons = addonsCurrentlySelected.filter((id) => id !== addonId);
-        //     }
-        //     else {
-        //         // else add the addon to the list
-        //         newAddons = [...addonsCurrentlySelected, addonId]
-        //     }
-
-        //     return {
-        //         selectedAddons: newAddons
-        //     };
-        // });
     },
 
-    // Get addon data
+    //* Get addon data
     getAddonData: (addonId) => addons.find(addon => addon.id === addonId),
 
-    // Calculate total addons price
+    //* Calculate total addons price
     getTotalAddonsPrice: (isYearly) => {
         const { selectedAddons } = get();
+        
         return selectedAddons.reduce((total, addonId) => {
             const addon = addons.find(addon => addon.id === addonId);
             const price = addon ? (isYearly ? addon.yearly : addon.monthly) : 0;
