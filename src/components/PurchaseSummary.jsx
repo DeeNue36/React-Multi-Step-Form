@@ -1,11 +1,10 @@
 import { useStepProgression } from "../store/stepProgression";
 import { usePlanSelection } from "../store/planSelection";
 import { useAddonsSelection } from "../store/addonsSelection";
+import { useDisplayPurchaseSummary } from "../store/displayPurchaseSummary";
 
 export const PurchaseSummary = () => {
-    const setCurrentStep = useStepProgression((state) => state.setCurrentStep);
-    const nextStep = useStepProgression((state) => state.nextStep);
-    const prevStep = useStepProgression((state) => state.prevStep);
+    const { setCurrentStep, prevStep } = useStepProgression();
 
     const { isYearly, getSelectedPlanPrice, getSelectedPlanName } = usePlanSelection();
     const { selectedAddons, getTotalAddonsPrice, getAddonData } = useAddonsSelection();
@@ -16,10 +15,17 @@ export const PurchaseSummary = () => {
     const total = planPrice + addonsTotalPrice;
     const billingCycle = isYearly ? 'yr' : 'mo';
 
-    {/* <!-- * Step 4: Summary Section--> */}
+    const { setShowModal } = useDisplayPurchaseSummary();
+
+    const showConfirmationModal = (e) => {
+        e.preventDefault();
+        setShowModal(true);
+    }
+
+    {/* Step 4: Summary Section */}
     return (
         <section className="form summary-section">
-            <section className="form-mobile summary-section-mobile"> {/*<!-- * Mobile Container -->*/}
+            <section className="form-mobile summary-section-mobile"> {/* Mobile Container*/}
 
                 <div className="form-header">
                     <h1>Finishing up</h1>
@@ -31,7 +37,7 @@ export const PurchaseSummary = () => {
                         <div className="selected-plan-and-price">
                             <div className="selected-plan">
                                 <p className="user-plan-selected">
-                                    {planName} {isYearly? '(Yearly)' : '(Monthly)'}
+                                    {planName} {isYearly ? '(Yearly)' : '(Monthly)'}
                                 </p>
                                 <button 
                                     type="button"  
@@ -83,7 +89,7 @@ export const PurchaseSummary = () => {
                 <button type="button" className="previous-button" onClick={prevStep}>
                     Go Back
                 </button>
-                <button type="submit" className="next-button confirm-btn" onClick={nextStep}>
+                <button type="button" className="next-button confirm-btn" onClick={showConfirmationModal}>
                     Confirm
                 </button>
             </div>
