@@ -1,14 +1,17 @@
-import './App.css'
-import { useStepProgression } from './store/stepProgression'
-import { ProgressSidebar } from './components/ProgressSidebar'
-import { PersonalInfo } from './components/PersonalInfo'
-import { SelectPlan } from './components/SelectPlan'
-import { SelectAddons } from './components/SelectAddons'
-import { PurchaseSummary } from './components/PurchaseSummary'
-import { ThankYou } from './components/ThankYou'
+import './App.css';
+import { useStepProgression } from './store/stepProgression';
+import { ProgressSidebar } from './components/ProgressSidebar';
+import { PersonalInfo } from './components/PersonalInfo';
+import { SelectPlan } from './components/SelectPlan';
+import { SelectAddons } from './components/SelectAddons';
+import { PurchaseSummary } from './components/PurchaseSummary';
+import { ThankYou } from './components/ThankYou';
+import { useDisplayPurchaseSummary } from './store/displayPurchaseSummary';
+import { ConfirmationModal } from './components/ConfirmationModal';
 
 function App() {
   const { currentStep } = useStepProgression();
+  const { showModal } = useDisplayPurchaseSummary();
 
   const renderCurrentStep = () => {
     const steps = {
@@ -26,11 +29,14 @@ function App() {
     <>
       <div className="form-container">
         <ProgressSidebar />
-        {/* <!-- * Main Form Section --> */}
+        {/* Main Form Section */}
         <main className="form-main-section">
           {renderCurrentStep()}
         </main>
       </div>
+
+      {/* Confirmation Modal Overlay */}
+      {showModal && <ConfirmationModal />}
     </>
   )
 }
