@@ -466,4 +466,20 @@
     @apply fill-primary-bright-red;
   }
 
+  .confirmation-modal-details {
+    @apply w-full;
+  }
+
+  .modal-header {
+    @apply my-8 justify-items-center;
+  }
+
+  .modal-header h3 {
+    @apply text-2xl font-bold text-primary-dark-blue capitalize mbe-[0.8rem];
+  }
+
+  .modal-header h3 > span {
+    @apply text-primary-light-blue;
+  }
+
 }
