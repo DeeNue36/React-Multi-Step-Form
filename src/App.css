@@ -472,14 +472,49 @@
 
   .modal-header {
     @apply my-8 justify-items-center;
+
+    & h3 {
+      @apply text-2xl font-bold text-primary-dark-blue capitalize mbe-[0.8rem];
+
+      & span {
+        @apply text-primary-light-blue;
+      }
+    }
   }
 
-  .modal-header h3 {
-    @apply text-2xl font-bold text-primary-dark-blue capitalize mbe-[0.8rem];
+  .modal-body {
+    @apply bg-neutral-transparent-blue h-full w-full rounded-lxg p-6 flex;
+
+    & :is(h3, h4) {
+      @apply text-primary-dark-blue font-bold text-xl;
+    }
   }
 
-  .modal-header h3 > span {
-    @apply text-primary-light-blue;
+  .confirm-personal-info-container {
+    @apply border-r border-r-neutral-transparent-purple pe-5 me-5 flex flex-col justify-center items-center w-1/2;
+
+    & h3 {
+      @apply mbe-4;
+    }
   }
+
+  /** Shared/Repeated styling for confirming personal details (name, email, phone) */
+  .confirm-personal-detail {
+    @apply mbe-[0.8rem];
+
+    & h5 {
+      @apply text-primary-dark-blue font-regular text-large-size mbe-[0.2rem];
+    }
+
+    & span {
+      @apply text-neutral-dark-grey font-light;
+    }
+  }
+
+  .confirm-plan-and-addons-container {
+    @apply w-full;
+  }
+
+
 
 }
