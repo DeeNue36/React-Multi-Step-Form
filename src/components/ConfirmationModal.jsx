@@ -57,17 +57,17 @@ export const ConfirmationModal = () => {
                             <aside className="confirm-personal-info-container">
                                 <h3>Personal Info</h3>
                                 <div className="confirm-personal-info-body">
-                                    <div className="confirm-personal-info-name">
+                                    <div className="confirm-personal-detail">
                                         <h5>Name</h5>
-                                        <span className="personal-info-name">{nameValue}</span>
+                                        <span>{nameValue}</span>
                                     </div>
-                                    <div className="confirm-personal-info-email">
+                                    <div className="confirm-personal-detail">
                                         <h5>Email</h5>
-                                        <span className="personal-info-email">{emailValue}</span>
+                                        <span>{emailValue}</span>
                                     </div>
-                                    <div className="confirm-personal-info-phone">
+                                    <div className="confirm-personal-detail">
                                         <h5>Phone</h5>
-                                        <span className="personal-info-phone">{phoneValue}</span>
+                                        <span>{phoneValue}</span>
                                     </div>
                                 </div>
                             </aside>
