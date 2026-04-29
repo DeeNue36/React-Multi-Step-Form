@@ -515,6 +515,46 @@
     @apply w-full;
   }
 
+  .confirm-section, .confirm-add-on {
+    @apply flex justify-between items-center w-full;
+  }
+
+  .plan-price {
+    @apply text-regular-size;
+  }
+
+  .confirm-divider hr {
+    @apply w-full my-4 mx-0 border-neutral-transparent-purple;
+  }
+
+  .confirm-section:nth-child(-n+2), .confirm-add-on {
+    @apply mbe-4;
+  }
+
+  .plan-name, .addon-on-name {
+    @apply font-light text-neutral-dark-grey;
+  }
+
+  .add-on-name {
+    @apply capitalize;
+  }
+  
+  .plan-price, .add-on-price {
+    @apply text-primary-light-blue font-medium;
+  }
+
+  .add-on-price {
+    @apply text-small-size;
+  }
+
+  .total-amount {
+    @apply text-xl font-bold text-primary-purple-medium;
+  }
+
+  .confirm-button-container {
+    @apply w-full flex justify-end mt-6;
+  }
+
 
 
 }
