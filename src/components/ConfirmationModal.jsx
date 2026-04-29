@@ -74,18 +74,18 @@ export const ConfirmationModal = () => {
                             
                             <main className="confirm-plan-and-addons-container">
                                 {/* <!-- * Confirm Selected Plan --> */}
-                                <div className="confirm-plan-header">
+                                <div className="confirm-section">
                                     <h4>Plan</h4>
                                     <h4>Price</h4>
                                 </div>
 
-                                <div className="confirm-plan-body">
+                                <div className="confirm-section">
                                     <div className="confirm-plan-name">
                                         <span className="plan-name">{planName} {isYearly ? '(Yearly)' : '(Monthly)'}</span>
                                     </div>
 
                                     <div className="confirm-plan-price">
-                                        <span className="plan-price">{planPrice}/{billingCycle}</span>
+                                        <span className="plan-price">${planPrice}/{billingCycle}</span>
                                     </div>
                                 </div>
 
@@ -94,7 +94,7 @@ export const ConfirmationModal = () => {
                                 </div>
 
                                 {/* <!-- * Confirm Selected Add-ons Header --> */}
-                                <div className="confirm-add-ons-header">
+                                <div className="confirm-section">
                                     <h4>Add-ons</h4>
                                 </div>
 
@@ -108,7 +108,7 @@ export const ConfirmationModal = () => {
                                         return (
                                             <div className="confirm-add-on" key={addon.id}>
                                                 <span className="add-on-name">{addon.name}</span>
-                                                <span className="add-on-price">{addonPrice}/{billingCycle}</span>
+                                                <span className="add-on-price">+${addonPrice}/{billingCycle}</span>
                                             </div>
                                         )
                                     })}
@@ -119,10 +119,10 @@ export const ConfirmationModal = () => {
                                 </div>
 
                                 {/* <!-- * Confirm Total --> */}
-                                <div className="confirm-total">
+                                <div className="confirm-section">
                                     <h4>Total</h4>
                                     <div className="confirm-total-amount">
-                                        <span className="total-amount">{total}/{billingCycle}</span>
+                                        <span className="total-amount">${total}/{billingCycle}</span>
                                     </div>
                                 </div>
 
