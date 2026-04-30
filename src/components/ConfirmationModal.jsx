@@ -130,8 +130,8 @@ export const ConfirmationModal = () => {
 
                         </div>
 
-                        <div className="confirm-button-container">
-                            <button type="button" className="confirm-button" onClick={handleConfirmation}>
+                        <div className="confirm-button">
+                            <button type="button" onClick={handleConfirmation}>
                                 Confirm
                             </button>
                         </div>
