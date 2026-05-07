@@ -538,11 +538,11 @@
     @apply w-full my-4 mx-0 border-neutral-transparent-purple;
   }
 
-  .confirm-section:nth-child(-n+2), .confirm-add-on {
+  .confirm-section:nth-child(-n+4), .confirm-add-on {
     @apply mbe-4;
   }
 
-  .plan-name, .addon-on-name {
+  .plan-name, .add-on-name {
     @apply font-light text-neutral-dark-grey;
   }
 
