@@ -460,6 +460,9 @@
   .confirmation-modal-overlay {
     @apply  h-screen w-full bg-container-color flex justify-center items-center fixed top-0 left-0 right-0 bottom-0 z-4 overflow-y-scroll max-md:h-[calc(100%+0.688rem)];
   }
+  html:has(.confirmation-modal-overlay) {
+    @apply overflow-hidden;
+  }
 
   .confirmation-modal-container {
     @apply flex flex-col justify-center items-center w-[min(92vw,50rem)] bg-neutral-transparent-light-blue border border-neutral-transparent-purple shadow-modal rounded-xl p-8 relative max-md:h-[clamp(80vh,49.168rem,90vh)];
@@ -494,7 +497,7 @@
   }
 
   .modal-body {
-    @apply bg-neutral-transparent-blue h-full w-full rounded-lxg p-6 flex;
+    @apply bg-neutral-transparent-blue h-full w-full rounded-lxg p-6 flex max-md:flex-col max-md:h-[unset] max-md:px-[0.8rem];
 
     & :is(h3, h4) {
       @apply text-primary-dark-blue font-bold text-xl;
