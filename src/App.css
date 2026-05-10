@@ -513,7 +513,13 @@
   }
 
   .confirm-personal-info-body {
-    @apply max-md:grid max-md:grid-cols-3 max-md:w-full max-md:gap-x-2 max-md:text-center;
+    @apply max-md:grid max-md:grid-cols-[repeat(auto-fit,minmax(6rem,1fr))] max-md:w-full max-md:gap-x-2 max-md:text-center max-sm:text-left;
+  }
+
+  .confirm-personal-info-body .confirm-personal-detail:nth-child(2) {
+    & span {
+      @apply max-sm:wrap-break-word max-sm:hyphens-auto;
+    }
   }
 
   /** Shared/Repeated styling for confirming personal details (name, email, phone) */
