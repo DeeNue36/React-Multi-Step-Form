@@ -505,11 +505,15 @@
   }
 
   .confirm-personal-info-container {
-    @apply border-r border-r-neutral-transparent-purple pe-5 me-5 flex flex-col justify-center items-center w-1/2;
+    @apply border-r border-r-neutral-transparent-purple pe-5 me-5 flex flex-col justify-center items-center w-1/2 max-md:w-full max-md:border-r-0 max-md:me-0 max-md:pe-0 max-md:border-b max-md:border-b-neutral-transparent-purple max-md:mbe-4 max-md:pbe-[0.2rem];
 
     & h3 {
       @apply mbe-4;
     }
+  }
+
+  .confirm-personal-info-body {
+    @apply max-md:grid max-md:grid-cols-3 max-md:w-full max-md:gap-x-2 max-md:text-center;
   }
 
   /** Shared/Repeated styling for confirming personal details (name, email, phone) */
