@@ -488,11 +488,15 @@
     @apply my-8 justify-items-center;
 
     & h3 {
-      @apply text-2xl font-bold text-primary-dark-blue capitalize mbe-[0.8rem];
+      @apply text-2xl font-bold text-primary-dark-blue capitalize mbe-[0.8rem] max-md:text-center;
 
       & span {
         @apply text-primary-light-blue;
       }
+    }
+
+    & p {
+      @apply max-md:text-justify;
     }
   }
 
@@ -513,7 +517,7 @@
   }
 
   .confirm-personal-info-body {
-    @apply max-md:grid max-md:grid-cols-[repeat(auto-fit,minmax(6rem,1fr))] max-md:w-full max-md:gap-x-2 max-md:text-center max-sm:text-left;
+    @apply max-md:grid max-md:grid-cols-[repeat(auto-fit,minmax(6rem,1fr))] max-md:w-full max-md:gap-x-3 max-md:text-center max-sm:text-left;
   }
 
   .confirm-personal-info-body .confirm-personal-detail:nth-child(2) {
@@ -568,7 +572,7 @@
   }
 
   .add-on-price {
-    @apply text-small-size;
+    @apply text-small-size max-md:text-regular-size;
   }
 
   .total-amount {
