@@ -67,6 +67,7 @@
   /** Custom Checkbox Image */
   --background-image-checkbox-checked: url('../public/Images/icon-checkmark.svg');
 
+  --breakpoint-3xs: 22.5619rem;
   --breakpoint-xxs: 23.4375rem;
   --breakpoint-lmb: 26.5rem;
 
@@ -117,7 +118,7 @@
   }
 
   .progress-section-mobile {
-    @apply max-md:flex max-md:justify-between max-md:items-center max-md:w-3/5 max-xxs:w-1/2 max-md:mbe-16;
+    @apply max-md:flex max-md:justify-between max-md:items-center max-md:w-3/5 max-xxs:w-1/2 max-md:mbe-16 max-3xs:w-[64%];
   }
 
   .progress-circle {
