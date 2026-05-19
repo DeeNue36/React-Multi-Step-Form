@@ -1,4 +1,4 @@
-import thankYou from '/public/Images/icon-thank-you.svg'
+import thankYou from '/Images/icon-thank-you.svg';
 
 export const ThankYou = () => {
     {/* <!-- * Step 5: Thank You Section --> */}
